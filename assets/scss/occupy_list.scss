@@ -1,0 +1,32 @@
+div{
+	&.query-btn{
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		/*text-align: center;*/
+		margin-bottom: 2rem;
+		padding-top: .5rem;
+		form{
+			
+		}
+
+		button{
+			font-size: 2rem;
+			float: right;
+			position: relative;
+			/*right: 1rem;*/
+			top:1rem;
+		}
+	}
+}
+
+table{
+	width: 100%;
+	text-align: center;
+	th{
+		width: 16.66%;
+	}
+	td{
+		width: 16.66%;
+	}
+}

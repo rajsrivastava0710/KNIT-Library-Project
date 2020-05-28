@@ -1,0 +1,16 @@
+span {
+  position: relative;
+  top: -.2rem;
+  margin-bottom: .3rem; }
+  span button {
+    font-size: 1.3rem;
+    width: 13rem;
+    padding: .3rem;
+    border-radius: 10px;
+    border: none; }
+    span button#google-btn {
+      background: #d81e00; }
+    span button#github-btn {
+      background: #292929; }
+    span button a {
+      color: #eaeaea; }

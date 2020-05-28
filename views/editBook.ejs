@@ -1,0 +1,8 @@
+<form action = '/library/book/<%= book.id %>/update' method = 'POST'>
+	<input type = 'text' placeholder='Enter book name' name = 'name' value='<%= book.name %>'>
+	<input type = 'text' placeholder='Enter writer name' name = 'writer' value='<%= book.writer %>'>
+	<input type = 'text' placeholder='Enter publication' name = 'publication' value='<%= book.publication %>' >
+	<input type = 'text' placeholder='Enter category of book' name = 'category' value='<%= book.category %>' >
+	<input type = 'number' placeholder='Enter ISBN Number of book' name = 'isbn' value='<%= book.isbn %>' >
+	<button>Update Book</button>
+</form>

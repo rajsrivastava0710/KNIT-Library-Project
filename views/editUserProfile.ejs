@@ -1,0 +1,7 @@
+<form action = '/users/profile/<%= editUser.id %>/update' method='post'>
+	<input type='text' name='name' placeholder='Your Name' value= '<%= editUser.name %>'>
+	<input type='number' name='rollNo' placeholder='Your Roll Number' value= '<%= editUser.rollNo %>'>
+	<input type='number' name='mobile' placeholder='Your MobileNumber' value= '<%= editUser.mobile %>'>
+	<input type='text' name='branch' placeholder='Your branch' value= '<%= editUser.branch %>'>
+	<input type='submit' value='Update'>
+</form>

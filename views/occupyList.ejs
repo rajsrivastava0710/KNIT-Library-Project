@@ -1,0 +1,74 @@
+<link rel="stylesheet" type="text/css" href="/css/occupy_list.css">
+<div class='query-btn'>
+<form id='past' action='/library/userlist' method='get'>
+<input type='text' name='past_data' value='true' hidden>
+<button>Past Record</button>
+</form>
+
+<form id='active' action='/library/userlist' method='get'>
+<input type='text' name='past_data' value='false' hidden>
+<button>Active Record</button>
+</form>
+<button id='all'><a href='/library/userlist'>All Records</a></button>
+</div>
+
+<table>
+	<thead>
+	<tr>
+		<th>Book</th>
+		<th>Owner</th>
+		<th>Issue Date</th>
+		<th>Return Date</th>
+		<th>Return Status</th>
+		<th>Fine</th>
+	</tr>
+	</thead>
+	<tdata>
+		<% for(record of records){ %>
+			<tr>
+				<td><a href='/library/book/<%= record.book.id %>'><%= record.book.name %></a></td>
+				<td><a href='/users/profile/<%= record.user.id %>'><%= record.user.name %></a></td>
+				<td><%= moment(record.createdAt).format('ll') %></td>
+				
+				<% if(record.returnDate){ %>
+				<td><%= moment(record.returnDate).format('ll') %></td>
+				
+				<% }else{ %>
+				
+				<td> - </td>
+				<% } %>
+				
+				<td><%= record.isPast %></td>
+				
+				<% if(record.isPast){ %>
+				
+				<td><%= record.fine %></td>
+				
+				<% }else{ %>
+				
+				<% let time = moment(Date.now()).diff(moment(record.createdAt),'days') %>
+				<% if(time>60){ %>
+
+					<% if(time<=90){ %>
+						<td>time-60*</td>
+
+					<% }else{ %>
+						<td><%= (time-60)*2 -30 %>*</td>
+
+					<% } %>
+
+				<% }else{ %>
+
+					<td>0*</td>
+				
+				<% } %>
+				
+				<% } %>
+				<!-- <td><%= moment(Date.now()).diff(moment(record.createdAt),'minutes') %></td> -->
+				<!-- minutes till created -->
+			</tr>		
+		<% } %>
+
+	</tdata>
+</table>
+<div><i><small style="color: red">* The book has not been submitted yet , so it is dynamic fine at the moment and may change with time depending upon the return date of book. </small></i></div>

@@ -1,0 +1,53 @@
+header {
+  /*color:blue;*/
+  z-index: 100;
+  position: sticky;
+  top: 0;
+  font-size: 2rem;
+  transition: top 0.4s; }
+  header .nav-bar {
+    /*background-color: #328be494;*/
+    background: linear-gradient(45deg, #8dd899, #88b3e0, #e6da83, #d08990); }
+  header .default-flex {
+    display: flex;
+    align-items: center; }
+    header .default-flex .reverse-flex {
+      display: flex;
+      justify-content: flex-end; }
+    header .default-flex ._20per {
+      align-self: center;
+      width: 19rem;
+      padding: .3rem .8rem; }
+      header .default-flex ._20per #app-name {
+        color: blue;
+        font-size: 3rem;
+        margin-left: .3rem; }
+    header .default-flex ._80per {
+      width: 64rem; }
+      header .default-flex ._80per #nav-user:hover {
+        background-color: #89d8c3; }
+      header .default-flex ._80per #nav-user {
+        transition: background .8s;
+        /*background-color: #254cd4;*/
+        background-color: #5f7ff1;
+        font-weight: 600;
+        font-family: sans-serif; }
+      header .default-flex ._80per div {
+        align-self: center;
+        text-align: center; }
+        header .default-flex ._80per div a {
+          color: white; }
+          header .default-flex ._80per div a img {
+            position: relative;
+            top: 8px;
+            left: 5px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 1px solid #3b3b75db;
+            object-fit: cover;
+            box-shadow: 0 0 4px 1px #c73821; }
+      header .default-flex ._80per .small-margin {
+        padding: 1rem 1rem 1rem 1rem; }
+        header .default-flex ._80per .small-margin .black-font {
+          color: black; }

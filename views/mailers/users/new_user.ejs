@@ -1,0 +1,18 @@
+<!-- <link rel="stylesheet" type="text/css" href="/css/emails/comment.css">  -->
+<div style='text-align:center;background: linear-gradient(45deg, #b55353, #65b8d6f7);/*width:68%*/width:75%;height: auto;padding: 3rem;padding-top:1rem;margin:1rem auto;text-align: center;'>
+
+	<p style='text-align: center;color:#3131a9;font-family: cursive;font-size: 2.5rem'>Greetings from KNIT-Library</p>
+	<p style="word-spacing: .04rem;
+			    text-align: center;
+			    font-size: 1.8rem;
+			    letter-spacing: .03rem;
+			    font-family: monospace;
+			    font-size: 1.3rem;">
+
+			    Hello <%=user.name %> , You created an account on KNIT-Library with this email Id (<span style='color:#9c1d1d'>Password : <%=user.password %></span>)</p>
+			    <% if(!user.isValid){ %>
+	<p><a style='color:#3131a9;font-size: 1.6rem' href='http:localhost:3000/users/confirm_account/<%= user.activationKey %>' target='_blank'>Account Verification Link</a>
+		<p style='font-size: 1.4rem'>Please open this link in a new tab !</p>
+	</p>
+				<% } %>
+</div>

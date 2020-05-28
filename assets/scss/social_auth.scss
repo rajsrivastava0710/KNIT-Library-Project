@@ -1,0 +1,21 @@
+span{
+	position: relative;
+	top: -.2rem;
+	margin-bottom: .3rem;
+	button{
+		font-size: 1.3rem;
+	    width: 13rem;
+	    padding: .3rem;
+	    border-radius: 10px;
+	    border: none;
+		&#google-btn{
+		    background: #d81e00;		    
+		}
+		&#github-btn{
+			background:#292929;
+		}
+		a{
+		    color:#eaeaea;
+		}
+	}
+}

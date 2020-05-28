@@ -1,0 +1,18 @@
+$medium : 2rem;
+
+body{
+	position:relative;
+	/*font-size:$medium;*/
+	background-color:#f6f6fb8f;
+	margin:0 0;
+
+	#layout-body{
+		background: linear-gradient(45deg, #d0dbdebf, #f4e5cee6);
+		font-size: $medium; 
+		padding:1.5rem;
+		min-height:72vh;
+
+		/*Fixing the nav at top , so pushing main content behing when at top of nav --temporarily*/
+	    z-index: -1;
+	}
+}

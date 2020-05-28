@@ -1,0 +1,65 @@
+<link rel="stylesheet" type="text/css" href="/css/book_detail.css">
+
+<div>Book : <%= book.name %></div>
+<div>ISBN Number : <%= book.isbn %></div>
+<div>Author : <%= book.writer %></div>
+<div>Publication : <%= book.publication %></div>
+<div>Category : <%= book.category %>
+<% if(book.isAvailable && locals.user.email == 'rajsriv.14@gmail.com'){ %>
+<!-- only admin can avail it -->
+<div>
+	<form action = '/library/book/<%=book.id %>/avail' method='get'>
+		<input type='email' name='email' placeholder = 'Issuer E-Mail ID' required>
+		<button>Avail Book</button>
+	</form>
+</div>
+<% } %>
+<% if(!book.isAvailable){ %>
+<div>
+	<button><a href='/library/book/<%= book._id %>/notify'>Notify when free</a></button>
+</div>
+<% } %>
+<% if(book.owner){ %>
+<div>
+	<b>Current Owner</b>:
+	<%= book.owner.user.name %> : <small><%= moment(book.owner.createdAt).format('lll') %></small>
+</div>
+<% } %>
+<% if(locals.user && book.creator == locals.user.id){ %>
+<div><button><a href='/library/book/<%= book.id %>/edit'>Update Book</a></button></div>
+<% } %>
+
+<div>
+<div>All available copies</div>
+<% for(copy of copies){ %>
+	<a href='/library/book/<%= copy.id %>'><%= copy.isbn %></a>
+	<small><%= copy.isAvailable %></small>
+<% } %>
+</div>
+
+<div id='comment-container'>
+<% if(locals.user){ %>
+<form id='new-comment-form' action="/library/book/<%= book.id %>/comment" method='Post'>
+	<input type='text' name='content' placeholder='Write your comment' required>
+	<button>Comment</button>
+</form>
+<% } %>
+<ul>
+	<% for(comment of book.comments){ %>
+		<li id='comment-<%=comment.id %>'>
+			<% if(locals.user.id == comment.user.id){ %>
+			<a class='delete-comment-btn' href='/library/book/<%= book.id %>/comment/<%= comment.id %>/destroy'>X</a>
+			<% } %>
+			<%= comment.content %> : <%= comment.user.name %>
+			<br>
+			<small><%= moment(comment.createdAt).fromNow() %></small> 
+		</li>
+	<% } %>
+</ul>
+</div>
+<small style='color:green'>Past Users</small>
+<% for(record of book.pastOwner){ %>
+	<div><a href='/users/profile/<%= record.user.id %>'><%= record.user.name %></a> : <small><%= moment(record.createdAt).format('lll') %></small></div>
+<% } %>
+
+<script type="text/javascript" src='/js/book_comments.js'></script>

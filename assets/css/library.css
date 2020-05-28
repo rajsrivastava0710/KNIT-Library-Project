@@ -1,0 +1,56 @@
+div {
+  box-sizing: border-box; }
+  div#page-container {
+    display: flex;
+    flex-direction: column; }
+    div#page-container #form-container {
+      width: 100%;
+      text-align: center;
+      margin: 1.2rem auto; }
+      div#page-container #form-container input[type='text'] {
+        width: 35%;
+        min-width: 300px;
+        height: 2.7rem;
+        border: 2px solid #696998;
+        outline: none;
+        padding: 5px;
+        font-size: 1.4rem;
+        font-family: cursive;
+        border-radius: 10px; }
+      div#page-container #form-container input[type='text']:focus {
+        box-shadow: 0 0 10px 5px #d3f3fd;
+        border: 2px solid #1c1cd6; }
+      div#page-container #form-container button {
+        width: 8rem;
+        margin: 1.5rem;
+        height: 2rem;
+        border: 2px solid #101017;
+        background: #686cfd7a;
+        font-size: 1.2rem;
+        border-radius: 13px;
+        color: #041017;
+        outline: none; }
+      div#page-container #form-container button:focus {
+        border: 4px solid #101087; }
+    div#page-container #book-collection-container {
+      margin: 2rem 0;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly; }
+      div#page-container #book-collection-container .book-container {
+        height: 22rem;
+        min-width: 300px;
+        box-sizing: border-box;
+        width: 30%;
+        border: 2px solid red;
+        word-break: break-word;
+        padding: 1rem;
+        margin: 1.2rem .5rem;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        flex-wrap: wrap; }
+        div#page-container #book-collection-container .book-container div {
+          width: 100%; }

@@ -1,0 +1,24 @@
+<link rel="stylesheet" type="text/css" href="/css/login.css">
+<div id ='login'>
+<div>
+<form action='/users/create-session' method='post'>
+<div id='new-form'>
+<span class='auth-heading'>Login</span>
+<span class='warning'>Enter your E-Mail ID</span>
+<input id='email' type='email' name='email' placeholder='E-Mail ID' title='Enter your E-Mail ID' required>
+<span class='warning'>Enter your Password</span>
+<input id='password' type='password' name='password' placeholder='Password' title='Enter your Password' required>
+
+<input type='submit' title='Click to Login' value='Login'>
+
+<%- include('./_socialAuth'); %>
+
+<span class='forgot-pass'><a>Forgot Password?</a></span>
+</div>
+</form>
+<form class='hide' action='/users/reset_password' method='post'>
+<input id='forget-mail' type='email' placeholder='Enter your E-Mail ID' name='email'>
+</form>
+</div>
+</div>
+<script type="text/javascript" src='/js/login.js'></script>

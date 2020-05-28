@@ -1,0 +1,24 @@
+<link rel="stylesheet" type="text/css" href="/css/signup.css">
+<div id ='signup'>
+<div>
+<form action='/users/create' method='post'>
+<div id='new-form'>
+<span class='auth-heading'>SignUp</span>
+<span class='placeholder'>Enter your name</span>
+<input type='text' name='name' placeholder='Name' title='Enter your name' required>
+<span class='placeholder'>Enter your E-Mail ID</span>
+<input type='email' name='email' placeholder='E-Mail ID' title='Enter your E-Mail ID' required>
+<span class='placeholder'>Enter your Password</span>
+<input id='password' type='password' name='password' placeholder='Password' title='Enter your Password' required>
+<span class='warning'>Password must be at least 5 characters long</span>
+<span class='placeholder'>Confirm your Password</span>
+<input id='confirm_pass' type='password' name='confirm_password' placeholder='Confirm Password' title='Confirm your Password' required>
+<input type='submit' title='Click here to SignUp !' value='SignUp'>
+
+<%- include('./_socialAuth'); %>
+
+</div>
+</form>
+</div>
+</div>
+<script src='/js/signup.js'></script>

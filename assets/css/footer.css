@@ -1,0 +1,13 @@
+footer {
+  /*top:4.8rem;
+    position:relative;*/
+  font-size: 2rem;
+  height: auto;
+  color: #bd0d0d;
+  background: linear-gradient(45deg, #6f99ad, #8a5e5e);
+  padding: 1rem 1rem; }
+  footer div {
+    font-weight: 600; }
+    footer div small {
+      color: #0b256b;
+      font-weight: 200; }

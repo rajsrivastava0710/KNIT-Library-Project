@@ -1,0 +1,48 @@
+<header>
+	<div class='default-flex nav-bar'>
+		
+		<div class='_20per'>
+			<a id='app-name' href='/'><strong>KNIT</strong></a>
+		</div>
+	
+		<div class='_80per reverse-flex'>
+		<% if(locals.user){ %>
+
+ 		<% if(locals.user.email == 'rajsriv.14@gmail.com'){ %>
+ 		<div id='nav-user' class='small-margin'>
+			<a style='color: #ad1c1c;' class='black-font' href='/users/profile/<%= user._id %>'>ADMIN MODE</a>
+		</div>
+		<% }else{ %>
+ 		<div id='nav-user' class='small-margin'>
+			<a class='black-font' href='/users/profile/<%= user._id %>'><%= user.name.split(" ")[0] %></a>
+		</div>
+		<% } %>
+
+		<div class='small-margin'>
+			<a href='/users/remove-session'>LogOut</a>
+		</div>
+		<% }else{ %>
+		<div class='small-margin'>
+			<a href='/users/login'>Login</a>
+		</div>
+
+		<div class='small-margin'>
+			<a href='/users/signup'>SignUp</a>
+		</div>
+		
+		<% } %>
+		</div>
+	</div>
+</header>
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.querySelector("header").style.top = "0";
+  } else {
+    document.querySelector("header").style.top = "-5rem";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>

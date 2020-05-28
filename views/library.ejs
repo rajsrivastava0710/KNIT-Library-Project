@@ -1,0 +1,24 @@
+<link rel="stylesheet" type="text/css" href="/css/library.css">
+<div id='page-container'>
+<div id='form-container'>
+<form action='/library' method='get'>
+	<div>
+		<input type="text" name="book" placeholder='Search Book here'>
+	</div>
+	<div>
+		<button>Search</button>
+	</div>
+</form>
+</div>
+<div id='book-collection-container'>
+<% for(book of books){ %>
+	<div class='book-container'>
+		<div><%= book.name %></div>
+		<div><%= book.writer %></div>
+		<div><%= book.publication %></div>
+		<!-- Available: <%= book.isAvailable %><br> -->
+		<div><button><a href='/library/book/<%= book.id %>'>Click Here</a></button></div>
+	</div>
+<% } %>
+</div>
+</div>

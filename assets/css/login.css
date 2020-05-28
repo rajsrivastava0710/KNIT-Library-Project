@@ -1,0 +1,86 @@
+body #login {
+  padding: 1.5rem 0; }
+  body #login .auth-heading {
+    text-shadow: 1px 0 5px #e04f21;
+    color: #980319;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #07025e;
+    width: 105%;
+    text-align: center;
+    padding-bottom: 1rem; }
+  body #login #new-form {
+    box-shadow: 0 0 20px 2px #af74a3;
+    background: linear-gradient(45deg, #ca8c8c, #bdc56c00);
+    padding: .4rem 1rem .8rem 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    min-width: 19rem;
+    margin: 0 auto;
+    align-items: center;
+    border: 2px solid #020261; }
+    body #login #new-form .warning {
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: -0.6rem;
+      color: #4a49e2;
+      font-weight: 600;
+      font-family: monospace; }
+    body #login #new-form input:focus {
+      box-shadow: 0 0 10px 0.1em #76b0cc; }
+    body #login #new-form input {
+      font-family: serif;
+      border-radius: .9rem;
+      border: 2px solid slateblue;
+      box-shadow: 0 0 5px 1px #d6aeb6;
+      outline: none;
+      font-size: 1.4rem;
+      margin: .6rem;
+      padding: .5rem;
+      transition: box-shadow 0.35s ease-in-out; }
+    body #login #new-form input[type='submit'] {
+      border-radius: 10px;
+      border: 2px solid #871b1b;
+      color: #de2312;
+      font-family: cursive;
+      background: #53a7ce;
+      box-shadow: 0 0 15px 3px #d5c436; }
+    body #login #new-form span.forgot-pass {
+      position: relative;
+      bottom: 10px; }
+      body #login #new-form span.forgot-pass a {
+        font-size: 1.3rem;
+        color: #225647; }
+    body #login #new-form #forget-mail {
+      margin-top: -.1rem;
+      width: 50%;
+      height: 1rem;
+      font-size: 1rem;
+      border: 2px solid grey;
+      border-radius: .5rem; }
+  body #login form.hide {
+    box-shadow: 0 0 20px 2px #af74a3;
+    background: linear-gradient(45deg, #ca8c8c, #bdc56c00);
+    padding: .4rem 1rem .8rem 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    min-width: 19rem;
+    margin: 0 auto;
+    align-items: center;
+    border: 2px solid #020261;
+    border-top: 0; }
+    body #login form.hide input {
+      margin: .6rem;
+      padding: .5rem;
+      box-shadow: 0 0 5px 1px #d6aeb6;
+      font-size: 1rem;
+      font-family: sans-serif;
+      text-align: center;
+      width: 55%;
+      border: 2px solid #566e84;
+      outline: none;
+      border-radius: .5rem;
+      font-weight: 600;
+      color: #2e34c7; }
