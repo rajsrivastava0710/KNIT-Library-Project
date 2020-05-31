@@ -7,6 +7,7 @@ footer {
   background: linear-gradient(45deg, #6f99ad, #8a5e5e);
   padding: 1rem 1rem; }
   footer div {
+    font-family: monospace;
     font-weight: 600; }
     footer div small {
       color: #0b256b;

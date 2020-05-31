@@ -25,6 +25,9 @@ const bookSchema = new mongoose.Schema({
 	category:{
 		type:String
 	},
+	coverPage:{
+		type:String
+	},
 	isAvailable:{
 		type:Boolean,
 		default:true

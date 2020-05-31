@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
 	branch:{
 		type:String
 	},
+	course:{
+		type:String
+	},
 	mobile:{
 		type:Number
 	},

@@ -33,17 +33,16 @@ module.exports.bookDetails = async function(req,res){
 					path:'user book'
 					}
 				})
-			.populate(
-				{
-					path: 'comments',
-					populate:{
-					path: 'user'
-					}
-				});
+			// .populate(
+			// 	{
+			// 		path: 'comments',
+			// 		populate:{
+			// 		path: 'user'
+			// 		}
+			// 	});
 	let copies = await Book.find({
 		name:book.name
 	})
-	console.log(copies);
 	return res.render('bookDetail',{
 		title:'Book Details',
 		book:book,
@@ -59,7 +58,6 @@ module.exports.bookDetails = async function(req,res){
 
 module.exports.occupyList = async function(req,res){ 
 	try{
-		if(req.user.email == 'rajsriv.14@gmail.com'){  //admin only
 			if(Object.keys(req.query).length>0){
 			let records = await IssueRecord.find({isPast:req.query.past_data}).sort('-createdAt').populate('user book');
 			// records = await records.populate('user').execPopulate();
@@ -74,9 +72,6 @@ module.exports.occupyList = async function(req,res){
 				title:'Books-Users Page',
 				records:records
 			});	
-		}else{
-			return res.redirect('back');
-		}
 		
 	}catch(err){
 		console.log(err);
@@ -85,19 +80,13 @@ module.exports.occupyList = async function(req,res){
 }
 
 module.exports.addBook = function(req,res){
-	if(req.user.email == 'rajsriv.14@gmail.com'){ //admin id only
 		return res.render('addBook',{
 		title:'Add new Book'
-	});	
-	}else{
-		return res.redirect('back');
-	}
-	
+	});		
 }
 
 module.exports.createBook = async function(req,res){
 	try{
-		if(req.user.email == 'rajsriv.14@gmail.com'){//admin id only
 			let exists = await Book.findOne({
 				name:req.body.name
 			});
@@ -110,7 +99,6 @@ module.exports.createBook = async function(req,res){
 			book.save();
 			req.flash('success','Book successfully created !');
 			return res.redirect('/library');
-		}
 	}catch(err){
 		console.log(err);
 		req.flash('error','Error while creating book ..');
@@ -181,8 +169,6 @@ module.exports.availBook = async function(req,res){
 
 module.exports.returnBook = async function(req,res){
 	try{
-		if(req.user.email == 'rajsriv.14@gmail.com'){   //admin only
-
 			let book = await Book.findById(req.params.id)
 								.populate(
 								{
@@ -232,9 +218,6 @@ module.exports.returnBook = async function(req,res){
 
 			return res.redirect('back');
 
-		}else{
-			return res.redirect('back');
-		}
 	}catch(err){
 		console.log(err);
 		req.flash('error','We encountered some error while returning the book..');
@@ -243,20 +226,14 @@ module.exports.returnBook = async function(req,res){
 }
 
 module.exports.editBook = function(req,res){
-	// Book.findById(req.params.id)
-	// 		.populate({
-	// 			path:'owner',
-	// 			populate:{
-	// 				path:'user book'
-	// 			}
-	// 		}).exec(function(err,book){
+
 		Book.findById(req.params.id,function(err,book){
 			if(err){
 				console.log(err);
 				req.flash('error','We encountered some error..');
 				return res.redirect('back');
 			}
-			if(book.creator == req.user.id /*|| req.user.email == 'rajsriv.14@gmail.com'*/){
+			if(book.creator == req.user.id){
 				return res.render('editBook',{
 				title:'Edit Book',
 				book:book
@@ -277,7 +254,7 @@ module.exports.updateBook = async function(req,res){
 					path:'user book'
 				}
 			});
-		if(book.creator == req.user.id /*|| req.user.email == 'rajsriv.14@gmail.com'*/){
+		if(book.creator == req.user.id){
 			await Book.findByIdAndUpdate(req.params.id,req.body);
 			req.flash('Book details updated successfully !');
 			return res.redirect(`/library/book/${req.params.id}`);

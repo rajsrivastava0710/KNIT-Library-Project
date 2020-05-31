@@ -98,7 +98,6 @@ module.exports.profile = async function(req,res){
 								path:'user book'
 								}
 							});
-			// user = await user.populate('availedBooks pastBooks').execPopulate();
 			return res.render('userProfile',{
 			title:'Profile',
 			profile_user:user
@@ -110,7 +109,7 @@ module.exports.profile = async function(req,res){
 }
 
 module.exports.editProfile = function(req,res){
-	if(req.params.id == req.user.id /*|| req.user.email == 'rajsriv.14@gmail.com'*/){
+	if(req.params.id == req.user.id /*|| req.user.email == env.adminEmail */){
 		User.findById(req.params.id,function(err,user){
 			return res.render('editUserProfile',{
 			title:'Edit Profile',
@@ -126,7 +125,7 @@ module.exports.editProfile = function(req,res){
 module.exports.updateProfile = async function(req,res){
 	try{
 		let user = await User.findById(req.params.id);
-		if(req.user.id == user.id /*|| req.user.email == 'rajsriv.14@gmail.com'*/){
+		if(req.user.id == user.id /*|| req.user.email == env.adminEmail*/){
 			if(req.body.email){
 				req.body.email = user.email;
 			}
@@ -184,8 +183,6 @@ module.exports.resetToken = async function(req,res){
 
 module.exports.resetPasswordPage = async function(req,res){
 	let reset = await Reset.findOne({token:req.params.id});
-	// let reset_ = await Reset.find({token:req.params.id});
-	// console.log(reset,reset_,req.params.id);
 	if(reset.isValid == true){
 		return res.render('resetPassword',{
 		resetToken : req.params.id,

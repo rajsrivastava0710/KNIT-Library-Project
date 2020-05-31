@@ -5,7 +5,7 @@
 <div>Author : <%= book.writer %></div>
 <div>Publication : <%= book.publication %></div>
 <div>Category : <%= book.category %>
-<% if(book.isAvailable && locals.user.email == 'rajsriv.14@gmail.com'){ %>
+<% if(book.isAvailable && locals.user.email == locals.adminEmail){ %>
 <!-- only admin can avail it -->
 <div>
 	<form action = '/library/book/<%=book.id %>/avail' method='get'>
@@ -36,7 +36,7 @@
 	<small><%= copy.isAvailable %></small>
 <% } %>
 </div>
-
+<!-- 
 <div id='comment-container'>
 <% if(locals.user){ %>
 <form id='new-comment-form' action="/library/book/<%= book.id %>/comment" method='Post'>
@@ -56,7 +56,7 @@
 		</li>
 	<% } %>
 </ul>
-</div>
+</div> -->
 <small style='color:green'>Past Users</small>
 <% for(record of book.pastOwner){ %>
 	<div><a href='/users/profile/<%= record.user.id %>'><%= record.user.name %></a> : <small><%= moment(record.createdAt).format('lll') %></small></div>

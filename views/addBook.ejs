@@ -1,8 +1,27 @@
+<link rel="stylesheet" type="text/css" href="/css/add_update_book.css">
+<div id= 'add-update-book-page-container'>
+<div id='addPage-header'>
+	Add book Details
+</div>
+
+<div id='form-container'>
 <form action = '/library/add-book/create' method = 'POST'>
 	<input type = 'text' placeholder='Enter book name' name = 'name' required>
 	<input type = 'text' placeholder='Enter writer name' name = 'writer' required>
 	<input type = 'text' placeholder='Enter publication' name = 'publication' required >
-	<input type = 'text' placeholder='Enter category of book' name = 'category' required>
 	<input type = 'number' placeholder='Enter ISBN Number' name = 'isbn' required>
+	
+	<!-- <input type = 'text' placehoalder='Enter category of book' name = 'category' required> -->
+	<select name="category" id="category">                        
+            <option value="" style='display: none'>Choose A Category</option>
+            <option value="Literature">Literature</option>
+            <option value="Comics">Comics</option>
+            <option value="Research">Research</option>
+            <option value="Astrology">Astrology</option>
+            <option value="Academic Subject">Academic Subject</option>
+    </select>
+    <input type = 'text' placeholder='Cover Page Image URL' name = 'coverPage'>
 	<button>Submit</button>
 </form>
+</div>
+</div>

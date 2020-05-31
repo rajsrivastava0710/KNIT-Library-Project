@@ -40,6 +40,13 @@ div{
 			}
 
 		}
+		.empty-message{
+			text-align: center;
+		    font-family: monospace;
+		    color: brown;
+		    position: relative;
+		    top: 50px;
+		}
 		#book-collection-container{
 			margin:2rem 0;
 			width: 100%;

@@ -1,28 +1,57 @@
+<link rel="stylesheet" type="text/css" href="/css/user_profile.css">
+
+<div id='profile-container'>
+<div id='profile-detail-container'>
+<div id='profile-heading'>
+	<% if(user._id .equals(profile_user._id)){ %>
+		My Profile
+	<% }else{ %>
+		<%= profile_user.name %>'s Profile
+	<% } %>
+</div>
+<div id='profile-detail'>
 <% if(profile_user.name){ %>
-<div>Name:<%= profile_user.name %></div>	
+<div><span class='user-detail-property'>Name</span> : <span class='user-detail-value'><%= profile_user.name %></span></div>	
 <% } %>
 <% if(profile_user.email){ %>
-<div>E-Mail:<%= profile_user.email %></div>	
+<div><span class='user-detail-property'>E-Mail</span> : <span class='user-detail-value'><%= profile_user.email %></span></div>	
 <% } %>
 <% if(profile_user.rollNo){ %>
-<div>Roll Number:<%= profile_user.rollNo %></div>	
+<div><span class='user-detail-property'>Roll Number</span> : <span class='user-detail-value'><%= profile_user.rollNo %></span></div>	
 <% } %>
 <% if(profile_user.mobile){ %>
-<div>Mobile:<%= profile_user.mobile %></div>	
+<div><span class='user-detail-property'>Mobile</span> : <span class='user-detail-value'><%= profile_user.mobile %></span></div>	
 <% } %>
 <% if(profile_user.branch){ %>
-<div>Branch:<%= profile_user.branch %></div>	
+<div><span class='user-detail-property'>Branch</span> : <span class='user-detail-value'><%= profile_user.branch %></span></div>	
 <% } %>
+<% if(profile_user.course){ %>
+<div><span class='user-detail-property'>Course</span> : <span class='user-detail-value'><%= profile_user.course %></span></div>	
+<% } %>
+</div>
+</div>
 <% if(locals.user.id == profile_user.id){ %>
-<div>
+<div id='update-profile-container'>
 <button><a href='/users/profile/<%= profile_user.id %>/edit'>Update Profile</a></button>
 </div>
 <% } %>
-<small style='color:red'><i>Issued Books:</i></small>
-<br>
+<div id='books-record-container'>
+
+<div id='past-books-container'>
+<div>Past Books</div>
+<div>
+	<% for(record of profile_user.pastBooks){ %>
+		<div class='book-detail'><%= record.book.name %> : <small><%= moment(record.createdAt).format('lll') %></small></div>
+	<% } %>
+</div>
+</div>
+
+<div id='issued-books-container'>
+<div>Issued Books</div>
+<div>
 <% for(record of profile_user.availedBooks){ %>
-	<div><%= record.book.name %> : <small><%= moment(record.createdAt).format('lll') %></small>
-		<% if(locals.user.email == 'rajsriv.14@gmail.com'){ %>
+	<div class='book-detail'><%= record.book.name %> : <small><%= moment(record.createdAt).format('lll') %></small>
+		<% if(locals.user.email == locals.adminEmail){ %>
 		<!-- only admin can return it -->
 		<form action='/library/book/<%=record.book.id %>/return' method='get'>
 			<input type = 'hidden' name='user_id' value = '<%= profile_user._id %>'>
@@ -31,9 +60,7 @@
 		<% } %>
 	</div>
 <% } %>
+</div>
+</div>
 
-<small style='color:blue'><i>Past Books:</i></small>
-<br>
-<% for(record of profile_user.pastBooks){ %>
-	<div><%= record.book.name %> : <small><%= moment(record.createdAt).format('lll') %></small></div>
-<% } %>
+</div>

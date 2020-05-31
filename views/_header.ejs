@@ -8,7 +8,7 @@
 		<div class='_80per reverse-flex'>
 		<% if(locals.user){ %>
 
- 		<% if(locals.user.email == 'rajsriv.14@gmail.com'){ %>
+ 		<% if(locals.user.email == locals.adminEmail){ %>
  		<div id='nav-user' class='small-margin'>
 			<a style='color: #ad1c1c;' class='black-font' href='/users/profile/<%= user._id %>'>ADMIN MODE</a>
 		</div>

@@ -10,6 +10,11 @@
 	</div>
 </form>
 </div>
+<% if(books.length==0){ %>
+	<div class= 'empty-message'>
+		We have no books at the moment
+	</div>
+<% } %>
 <div id='book-collection-container'>
 <% for(book of books){ %>
 	<div class='book-container'>

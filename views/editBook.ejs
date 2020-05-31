@@ -1,8 +1,46 @@
-<form action = '/library/book/<%= book.id %>/update' method = 'POST'>
+<link rel="stylesheet" type="text/css" href="/css/add_update_book.css">
+<div id= 'add-update-book-page-container'>
+<div id='update-user-header'>
+	Update Book Details
+</div>
+
+<div id='form-container'>
+	<form action = '/library/book/<%= book.id %>/update' method = 'POST'>
 	<input type = 'text' placeholder='Enter book name' name = 'name' value='<%= book.name %>'>
 	<input type = 'text' placeholder='Enter writer name' name = 'writer' value='<%= book.writer %>'>
-	<input type = 'text' placeholder='Enter publication' name = 'publication' value='<%= book.publication %>' >
-	<input type = 'text' placeholder='Enter category of book' name = 'category' value='<%= book.category %>' >
 	<input type = 'number' placeholder='Enter ISBN Number of book' name = 'isbn' value='<%= book.isbn %>' >
-	<button>Update Book</button>
+	<select name="category" id="category">                        
+            <option value="" style='display: none'>Choose A Category</option>
+            <% if(book.category == 'Literarture'){ %>
+            <option value="Literature" selected>Literature</option>
+            <% }else{ %>
+            <option value="Literature">Literature</option>
+            <% } %>
+            <% if(book.category == 'Comics'){ %>
+            <option value="Comics" selected>Comics</option>
+            <% }else{ %>
+            <option value="Comics">Comics</option>
+            <% } %>
+            <% if(book.category == 'Research'){ %>
+            <option value="Research" selected>Research</option>
+            <% }else{ %>
+            <option value="Research">Research</option>
+            <% } %>
+            <% if(book.category == 'Astrology'){ %>
+            <option value="Astrology" selected>Astrology</option>
+            <% }else{ %>
+            <option value="Astrology">Astrology</option>
+            <% } %>
+            <% if(book.category == 'Academic Subject'){ %>
+            <option value="Academic Subject" selected>Academic Subject</option>
+            <% }else{ %>
+            <option value="Academic Subject">Academic Subject</option>
+            <% } %>
+    </select>
+    <input type = 'text' placeholder='Cover Page Image URL' value='<%= book.coverPage %>' name = 'coverPage'>
+	
+	
+	<button>Update</button>
 </form>
+</div>
+</div>

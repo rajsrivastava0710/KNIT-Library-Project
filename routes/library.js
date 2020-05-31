@@ -4,6 +4,8 @@ const router = express.Router();
 
 const passport = require('passport');
 
+const { allowAdminAccessOnly } = require('../config/middleware.js');
+
 const libraryController = require('../controllers/library_controller');
 
 console.log('Books router loaded');
@@ -22,12 +24,13 @@ router.get('/book/:id/notify',passport.checkAuthentication,libraryController.not
 
 router.get('/book/:id/avail',passport.checkAuthentication,libraryController.availBook);
 
-router.get('/book/:id/return',passport.checkAuthentication,libraryController.returnBook);
+router.get('/book/:id/return',passport.checkAuthentication, allowAdminAccessOnly, libraryController.returnBook);
 
-router.get('/add-book',passport.checkAuthentication,libraryController.addBook);
-router.post('/add-book/create',passport.checkAuthentication,libraryController.createBook);
+router.get('/add-book',passport.checkAuthentication, allowAdminAccessOnly, libraryController.addBook);
 
-router.get('/userlist',passport.checkAuthentication,libraryController.occupyList);
+router.post('/add-book/create',passport.checkAuthentication, allowAdminAccessOnly, libraryController.createBook);
+
+router.get('/userlist',passport.checkAuthentication, allowAdminAccessOnly, libraryController.occupyList);
 
 router.use('/book',require('./comment'));
 

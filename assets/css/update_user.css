@@ -1,0 +1,42 @@
+#update-user-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  #update-user-page-container #update-user-header {
+    margin: 20px;
+    padding: 5px;
+    font-size: 2.8rem;
+    font-family: sans-serif; }
+  #update-user-page-container #form-container {
+    width: 55%; }
+    #update-user-page-container #form-container form {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      #update-user-page-container #form-container form input, #update-user-page-container #form-container form select {
+        width: 330px;
+        height: 40px;
+        margin: 10px;
+        padding: 5px;
+        font-size: 1.2rem;
+        box-sizing: border-box;
+        outline: none;
+        border: 2px solid #6b6bad;
+        transition: all .4s ease-in-out; }
+        #update-user-page-container #form-container form input:focus, #update-user-page-container #form-container form select:focus {
+          border: 2px solid blue;
+          box-shadow: 0 0 10px 10px lightblue; }
+      #update-user-page-container #form-container form select option {
+        font-weight: 600; }
+      #update-user-page-container #form-container form button {
+        width: 125px;
+        height: 45px;
+        margin: 14px;
+        border: 2px soliwd blue;
+        background: deepskyblue;
+        font-size: 1.3rem;
+        border-radius: 10px;
+        color: currentColor;
+        font-weight: 600;
+        font-family: cursive;
+        outline: none; }

@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require("cookie-parser");
@@ -14,8 +13,11 @@ const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 const passportGoogle = require('./config/passport-google-oauth2-strategy.js');
 const passportGithub = require('./config/passport-github-strategy.js');
+const env = require('./config/environment.js');
+const port = env.port || 3000;
 
-const custoMware = require('./config/middleware');
+const { setFlash } = require('./config/middleware');
+const { adminEmail } = require('./config/middleware');
 
 app.use(sassMiddleware({
 	src:'./assets/scss',
@@ -41,7 +43,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(session({
 	name:'cookie_1',
-	secret:'random-encryption',
+	secret: env.session_cookie_key,
 	saveUninitialized:false,
 	resave:false,
 	cookie:{
@@ -51,7 +53,7 @@ app.use(session({
 	store: new MongoStore(
 	{
 		// mongooseConnection: db,
-		url: 'mongodb://localhost/library_db',
+		url: `mongodb://localhost/${ env.db }`,
 		autoRemove: 'disabled'
 	},
 	function(err){
@@ -69,7 +71,9 @@ app.use(passport.setAuthenticatedUser);
 
 app.use(flash());
 //flash used after session
-app.use(custoMware.setFlash);
+app.use(setFlash);
+
+app.use(adminEmail);
 
 app.locals.moment = require('moment');
 
@@ -79,5 +83,5 @@ app.listen(port , function(err){
 	if(err){
 		console.log(`Error in running server: ${err}`);
 	}
-	console.log(`Server is running on port: ${port}`);
+	console.log(`${ env.name } Server is running on port: ${ port }`);
 });

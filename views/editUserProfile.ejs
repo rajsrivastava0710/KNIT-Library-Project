@@ -1,7 +1,35 @@
+<link rel="stylesheet" type="text/css" href="/css/update_user.css">
+<div id= 'update-user-page-container'>
+<div id='update-user-header'>
+	Update User Details
+</div>
+
+<div id='form-container'>
 <form action = '/users/profile/<%= editUser.id %>/update' method='post'>
 	<input type='text' name='name' placeholder='Your Name' value= '<%= editUser.name %>'>
 	<input type='number' name='rollNo' placeholder='Your Roll Number' value= '<%= editUser.rollNo %>'>
 	<input type='number' name='mobile' placeholder='Your MobileNumber' value= '<%= editUser.mobile %>'>
 	<input type='text' name='branch' placeholder='Your branch' value= '<%= editUser.branch %>'>
-	<input type='submit' value='Update'>
+	
+	<select name="course">                        
+            <option value="" style='display: none'>Course</option>
+            <% if(editUser.course == 'B Tech'){ %>
+            <option value="B Tech" selected>B Tech</option>
+            <% }else{ %>
+            <option value="B Tech">B Tech</option>
+            <% } %>
+            <% if(editUser.course == 'MCA'){ %>
+            <option value="MCA" selected>MCA</option>
+            <% }else{ %>
+            <option value="MCA">MCA</option>
+            <% } %>            
+            <% if(editUser.course == 'M Tech'){ %>
+            <option value="M Tech" selected>M Tech</option>
+            <% }else{ %>
+            <option value="M Tech">M Tech</option>
+            <% } %>
+    </select>
+    <button>Update</button>
 </form>
+</div>
+</div>

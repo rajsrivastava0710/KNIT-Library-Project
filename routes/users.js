@@ -4,11 +4,15 @@ const router = express.Router();
 
 const passport = require('passport');
 
+// const middleware = require('../config/middleware.js');
+
+const {allowAdminAccessOnly} = require('../config/middleware.js');
+
 const userController = require('../controllers/user_controller');
 
 console.log('User router loaded');
 
-router.get('/',passport.checkAuthentication,userController.searchUser);
+router.get('/',passport.checkAuthentication, allowAdminAccessOnly, userController.searchUser);
 
 router.get('/profile/:id' , passport.checkAuthentication , userController.profile);
 

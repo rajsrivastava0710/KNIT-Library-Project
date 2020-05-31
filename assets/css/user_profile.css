@@ -1,0 +1,57 @@
+div#profile-container {
+  display: flex;
+  flex-direction: column; }
+  div#profile-container #profile-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    div#profile-container #profile-detail-container #profile-heading {
+      font-size: 1.9em;
+      font-family: cursive;
+      margin: 5px 0 20px 0;
+      text-shadow: 0 0 10px #d06767;
+      color: #261111;
+      border-bottom: 4px solid #4a1711db; }
+    div#profile-container #profile-detail-container #profile-detail {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; }
+      div#profile-container #profile-detail-container #profile-detail > div {
+        width: 40%;
+        min-width: 460px;
+        /*text-align: center;*/
+        margin: 20px; }
+        div#profile-container #profile-detail-container #profile-detail > div span.user-detail-property {
+          font-size: 1.2em;
+          font-weight: 600; }
+        div#profile-container #profile-detail-container #profile-detail > div span.user-detail-value {
+          font-size: 1.1em; }
+  div#profile-container #update-profile-container {
+    text-align: center;
+    margin: 15px; }
+    div#profile-container #update-profile-container button {
+      width: 263px;
+      height: 66px;
+      font-size: 2rem;
+      border: 2px solid #5b377e;
+      border-radius: 10px;
+      background: #5acbf5;
+      outline: none;
+      box-shadow: 0 0 10px 5px #ccbecc; }
+      div#profile-container #update-profile-container button:hover {
+        border: 2px solid #1117db;
+        box-shadow: 0 0 10px 5px #8b85d0; }
+      div#profile-container #update-profile-container button a {
+        color: #cc3741; }
+  div#profile-container #books-record-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; }
+    div#profile-container #books-record-container #issued-books-container {
+      width: 40%;
+      text-align: center;
+      min-width: 375px; }
+    div#profile-container #books-record-container #past-books-container {
+      width: 40%;
+      text-align: center;
+      min-width: 375px; }

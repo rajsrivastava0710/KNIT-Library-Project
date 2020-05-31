@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const env = require('./environment.js');
 
-mongoose.connect('mongodb://localhost/library_db',{useUnifiedTopology : true ,useNewUrlParser:true , useCreateIndex:true, useFindAndModify:false});
+mongoose.connect(`mongodb://localhost/${ env.db }`,{useUnifiedTopology : true ,useNewUrlParser:true , useCreateIndex:true, useFindAndModify:false});
 
 const db = mongoose.connection;
 
