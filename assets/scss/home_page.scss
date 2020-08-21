@@ -1,3 +1,60 @@
 body{
 	color: blue;
+	div{
+		&#pic-gallery{
+			width: 100%;
+			height: 76vh;
+			display: flex;
+			margin: auto;
+			/*background: url('https://images.shiksha.com/mediadata/images/1489126055phpa7AiQY.jpeg');*/
+			/*background: url('https://lh3.googleusercontent.com/proxy/XBdA5N9ofsO_z3_h_ZweneoMOaseHEpeb3lGqkbpfyw_2ddng6qROtjT6MWNLreUZnNW9Ttdu5bCH32DK2lwpPlnfG7bHio7SBHTNEELxPIBftG1Y8axE-QJdCB8GGtB');*/
+	
+			animation: gallery 20s infinite;
+			background-size: cover;
+			background-repeat:no-repeat;
+			background-position: center;
+		}
+		&#welcome-text{
+			text-align: center;
+			margin:auto;
+			font-size: 3rem;
+			color: navy;
+			font-family: cursive;
+			text-shadow: 3px -4px 10px #588bb9;
+			background: #46353378;
+			padding: 10px;
+			border-radius: 15px;
+			transition: all .5s ease-in-out;
+			cursor: context-menu;
+			&:hover{
+				color:#10283e;
+			}
+		}
+	}
+}
+@keyframes gallery{
+	0%{
+		background: url('https://images.shiksha.com/mediadata/images/1489126055phpa7AiQY.jpeg');
+		background-size: cover;
+		background-repeat:no-repeat;
+		background-position: center;
+	}
+	33%{
+		background: url('https://images.shiksha.com/mediadata/images/1555040291phpnN5kIu.png');
+		background-size: cover;
+		background-repeat:no-repeat;
+		background-position: center;
+	}
+	66%{
+		background: url('https://s3-ap-southeast-1.amazonaws.com/blog.internshala.com/wp-content/uploads/2014/08/lib.jpg');
+		background-size: cover;
+		background-repeat:no-repeat;
+		background-position: center;
+	}
+	100%{
+		background: url('https://images.shiksha.com/mediadata/images/1489126055phpa7AiQY.jpeg');	
+		background-size: cover;
+		background-repeat:no-repeat;
+		background-position: center;
+	}
 }

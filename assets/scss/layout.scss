@@ -1,6 +1,12 @@
 $medium : 2rem;
 
 body{
+	a{
+	text-decoration:none;
+	}
+	a:hover{
+	text-decoration:none;
+	}
 	position:relative;
 	/*font-size:$medium;*/
 	background-color:#f6f6fb8f;
@@ -9,10 +15,31 @@ body{
 	#layout-body{
 		background: linear-gradient(45deg, #d0dbdebf, #f4e5cee6);
 		font-size: $medium; 
-		padding:1.5rem;
-		min-height:72vh;
+		/*padding:1.5rem;*/
+		min-height:75.6vh;
+		display:flex;
+		flex-direction:column;
 
 		/*Fixing the nav at top , so pushing main content behing when at top of nav --temporarily*/
 	    z-index: -1;
 	}
+}
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: silver;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

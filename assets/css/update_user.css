@@ -3,10 +3,14 @@
   flex-direction: column;
   align-items: center; }
   #update-user-page-container #update-user-header {
+    text-align: center;
     margin: 20px;
     padding: 5px;
     font-size: 2.8rem;
-    font-family: sans-serif; }
+    color: #37497d;
+    text-decoration: underline;
+    font-family: cursive;
+    text-shadow: 4px -4px 10px #4d6271; }
   #update-user-page-container #form-container {
     width: 55%; }
     #update-user-page-container #form-container form {
@@ -32,7 +36,7 @@
         width: 125px;
         height: 45px;
         margin: 14px;
-        border: 2px soliwd blue;
+        border: 2px solid blue;
         background: deepskyblue;
         font-size: 1.3rem;
         border-radius: 10px;

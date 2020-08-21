@@ -6,9 +6,13 @@
 
 <div id='form-container'>
 	<form action = '/library/book/<%= book.id %>/update' method = 'POST'>
+      <span class='placeholder'>Book Name</span>
 	<input type = 'text' placeholder='Enter book name' name = 'name' value='<%= book.name %>'>
+      <span class='placeholder'>Writer Name</span>
 	<input type = 'text' placeholder='Enter writer name' name = 'writer' value='<%= book.writer %>'>
+      <span class='placeholder'>ISBN Number</span>
 	<input type = 'number' placeholder='Enter ISBN Number of book' name = 'isbn' value='<%= book.isbn %>' >
+      <span class='placeholder'>Book Category</span>
 	<select name="category" id="category">                        
             <option value="" style='display: none'>Choose A Category</option>
             <% if(book.category == 'Literarture'){ %>
@@ -37,6 +41,7 @@
             <option value="Academic Subject">Academic Subject</option>
             <% } %>
     </select>
+    <span class='placeholder'>Cover Picture</span>
     <input type = 'text' placeholder='Cover Page Image URL' value='<%= book.coverPage %>' name = 'coverPage'>
 	
 	

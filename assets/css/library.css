@@ -1,12 +1,20 @@
 div {
   box-sizing: border-box; }
   div#page-container {
+    padding: 15px;
     display: flex;
     flex-direction: column; }
+    div#page-container .heading_ {
+      font-size: 2.8rem;
+      color: #37497d;
+      text-decoration: underline;
+      font-family: cursive;
+      text-align: center;
+      text-shadow: 4px -4px 10px #4d6271; }
     div#page-container #form-container {
       width: 100%;
       text-align: center;
-      margin: 1.2rem auto; }
+      margin: 1.2rem auto .2rem auto; }
       div#page-container #form-container input[type='text'] {
         width: 35%;
         min-width: 300px;
@@ -43,20 +51,73 @@ div {
       width: 100%;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-evenly; }
-      div#page-container #book-collection-container .book-container {
-        height: 22rem;
-        min-width: 300px;
-        box-sizing: border-box;
-        width: 30%;
-        border: 2px solid red;
-        word-break: break-word;
-        padding: 1rem;
-        margin: 1.2rem .5rem;
-        text-align: center;
+      justify-content: space-evenly;
+      align-items: center; }
+      div#page-container #book-collection-container .full-book-container {
         display: flex;
-        justify-content: space-between;
         flex-direction: column;
-        flex-wrap: wrap; }
-        div#page-container #book-collection-container .book-container div {
+        margin: 1.2rem .5rem;
+        width: 320px;
+        height: 445px;
+        border: 2px solid #6a6886; }
+        div#page-container #book-collection-container .full-book-container .cover-pic-container {
+          overflow: hidden;
           width: 100%; }
+          div#page-container #book-collection-container .full-book-container .cover-pic-container .book-container {
+            height: 22rem;
+            min-width: 300px;
+            box-sizing: border-box;
+            width: 100%;
+            word-break: break-word;
+            padding: 1rem;
+            margin: 0;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            flex-wrap: wrap;
+            transition: all .7s ease-in-out;
+            box-sizing: border-box; }
+            div#page-container #book-collection-container .full-book-container .cover-pic-container .book-container div {
+              margin: auto;
+              width: 100%; }
+              div#page-container #book-collection-container .full-book-container .cover-pic-container .book-container div button {
+                width: 55%;
+                font-size: 1.3rem;
+                border-radius: 5px;
+                outline: none;
+                padding: 5px;
+                background: #eae9e9;
+                border: 2px solid cadetblue;
+                transition: all 0.6s ease-in-out;
+                opacity: 0; }
+                div#page-container #book-collection-container .full-book-container .cover-pic-container .book-container div button a {
+                  color: #5a2d84;
+                  transition: color 0.4s ease-in-out; }
+              div#page-container #book-collection-container .full-book-container .cover-pic-container .book-container div button:hover, div#page-container #book-collection-container .full-book-container .cover-pic-container .book-container div click {
+                background: black;
+                border: 2px solid #125355; }
+                div#page-container #book-collection-container .full-book-container .cover-pic-container .book-container div button:hover a, div#page-container #book-collection-container .full-book-container .cover-pic-container .book-container div click a {
+                  color: white; }
+          div#page-container #book-collection-container .full-book-container .cover-pic-container .book-container:hover {
+            transform: scale(1.05); }
+            div#page-container #book-collection-container .full-book-container .cover-pic-container .book-container:hover button {
+              opacity: 100%; }
+        div#page-container #book-collection-container .full-book-container .book-detail {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-size: 1.6rem;
+          word-break: break-word;
+          padding: 10px;
+          background: #888787;
+          color: white;
+          text-align: center; }
+          div#page-container #book-collection-container .full-book-container .book-detail span:nth-child(1) {
+            font-weight: 700;
+            font-family: monospace;
+            font-size: 1.75rem; }
+          div#page-container #book-collection-container .full-book-container .book-detail span:nth-last-child(1) {
+            font-family: serif;
+            font-style: italic;
+            color: #e3eae9; }

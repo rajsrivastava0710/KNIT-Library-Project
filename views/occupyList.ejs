@@ -2,19 +2,19 @@
 <div class='query-btn'>
 <form id='past' action='/library/userlist' method='get'>
 <input type='text' name='past_data' value='true' hidden>
-<button>Past Record</button>
+<button class='btn btn-lg btn-primary'>Past Record</button>
 </form>
 
 <form id='active' action='/library/userlist' method='get'>
 <input type='text' name='past_data' value='false' hidden>
-<button>Active Record</button>
+<button class='btn btn-lg btn-success'>Active Record</button>
 </form>
-<button id='all'><a href='/library/userlist'>All Records</a></button>
+<button id='all' class='btn btn-lg btn-info'><a href='/library/userlist'>All Records</a></button>
 </div>
 
-<table>
+<table class='table table-striped table-bordered'>
 	<thead>
-	<tr>
+	<tr class='table-success'>
 		<th>Book</th>
 		<th>Owner</th>
 		<th>Issue Date</th>
@@ -26,7 +26,8 @@
 	<tdata>
 		<% for(record of records){ %>
 			<tr>
-				<td><a href='/library/book/<%= record.book.id %>'><%= record.book.name %></a></td>
+				<td><a href='/library/book/<%= record.book.id %>'>
+					<%= record.book.name.length>25?record.book.name.substr(0,16)+"...":record.book.name %></a></td>
 				<td><a href='/users/profile/<%= record.user.id %>'><%= record.user.name %></a></td>
 				<td><%= moment(record.createdAt).format('ll') %></td>
 				
@@ -71,4 +72,4 @@
 
 	</tdata>
 </table>
-<div><i><small style="color: red">* The book has not been submitted yet , so it is dynamic fine at the moment and may change with time depending upon the return date of book. </small></i></div>
+<div id='info-msg'><i><small style="color: red">* The book has not been submitted yet , so it is dynamic fine at the moment and may change with time depending upon the return date of book. </small></i></div>

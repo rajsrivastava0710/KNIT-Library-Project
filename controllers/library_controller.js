@@ -33,17 +33,20 @@ module.exports.bookDetails = async function(req,res){
 					path:'user book'
 					}
 				})
-			// .populate(
-			// 	{
-			// 		path: 'comments',
-			// 		populate:{
-			// 		path: 'user'
-			// 		}
-			// 	});
-	let copies = await Book.find({
-		name:book.name
-	})
+	let copies = await Book.find(
+	{$and:[{name:book.name},{writer:book.writer}]}
+	)
+
+	let alreadyNotified = false;
+	for(let i=0;i<book.notifyUser.length;i++){
+		if(book.notifyUser[i].equals(req.user._id)){
+			alreadyNotified = true;
+			break;
+		}
+	}
+	// let notified = await Book.findOne({likeable: {$in: post.comments}});
 	return res.render('bookDetail',{
+		alreadyNotified:alreadyNotified,
 		title:'Book Details',
 		book:book,
 		copies:copies
@@ -125,40 +128,35 @@ module.exports.notifyBook = async function(req,res){
 
 module.exports.availBook = async function(req,res){
 	try{
-		if(req.user.email == 'rajsriv.14@gmail.com'){   //admin only
-
-			let book = await Book.findById(req.params.id);
+		let book = await Book.findById(req.params.id);
+		let user = await User.findOne({email:req.query.email});
+		if(book && user && book.isAvailable && user.availedBooks.length<=1){//max 2 book at a time
+		
 			let user = await User.findOne({email:req.query.email});
-			if(book && user && book.isAvailable && user.availedBooks.length<=1){//max 2 book at a time
+			let record = await IssueRecord.create({
+				user : user.id,
+				book : book.id,
+				isPast : false
+			});
+			book.isAvailable = false;
+			book.owner = record.id;
+			book.save();
 			
-				let user = await User.findOne({email:req.query.email});
-				let record = await IssueRecord.create({
-					user : user.id,
-					book : book.id,
-					isPast : false
-				});
-				book.isAvailable = false;
-				book.owner = record.id;
-				book.save();
-				
-				user.availedBooks.unshift(record.id);
-				user.save();
-				req.flash('success','This user has availed this book successfully !');
-			}
-			else if(user && user.availedBooks.length>1){
-				req.flash('error','This user has already issued 2 books (Maximum Limit for a single user is 2 books)');
-				return res.redirect(`/library/book/${book.id}`);
-			}else if(!user){
-				req.flash('error','No such user exists !');
-				return res.redirect(`/library/book/${book.id}`);
-			}else{
-				req.flash('error','This book is not available right now!');
-				return res.redirect(`/library/book/${book.id}`);
-			}
-			return res.redirect('back');
-		}else{
-			return res.redirect('back');
+			user.availedBooks.unshift(record.id);
+			user.save();
+			req.flash('success','This user has availed this book successfully !');
 		}
+		else if(user && user.availedBooks.length>1){
+			req.flash('error','This user has already issued 2 books (Maximum Limit for a single user is 2 books)');
+			return res.redirect(`/library/book/${book.id}`);
+		}else if(!user){
+			req.flash('error','No such user exists !');
+			return res.redirect(`/library/book/${book.id}`);
+		}else{
+			req.flash('error','This book is not available right now!');
+			return res.redirect(`/library/book/${book.id}`);
+		}
+		return res.redirect('back');
 		
 	}catch(err){
 		console.log(err);
@@ -205,13 +203,16 @@ module.exports.returnBook = async function(req,res){
 				}
 
 				record[0].save(); 
+
 				let notify = [... new Set(book.notifyUser)];
+
+				book.notifyUser=[];
+				book.save();
+
 				//Nodemailer
 				for(let i=0;i<notify.length;i++){
 				notifyUserMailer.notifyUser(notify[i],book.name);
 				}
-				book.notifyUser=[];
-				book.save();
 
 				req.flash('success','The book has been successfully returned !');
 			}
@@ -233,15 +234,11 @@ module.exports.editBook = function(req,res){
 				req.flash('error','We encountered some error..');
 				return res.redirect('back');
 			}
-			if(book.creator == req.user.id){
 				return res.render('editBook',{
 				title:'Edit Book',
 				book:book
 			})
-			}else{
-				req.flash('error','You can not perform this operation..');
-				return res.redirect(`/library/book/${book.id}`);		
-			}	
+			
 		});
 }
 
@@ -254,14 +251,10 @@ module.exports.updateBook = async function(req,res){
 					path:'user book'
 				}
 			});
-		if(book.creator == req.user.id){
 			await Book.findByIdAndUpdate(req.params.id,req.body);
 			req.flash('Book details updated successfully !');
 			return res.redirect(`/library/book/${req.params.id}`);
-		}else{
-			req.flash('error','You are not authorised to update this book ..');
-			return res.redirect('/');
-		}
+		
 
 	}catch(err){
 		console.log(err);

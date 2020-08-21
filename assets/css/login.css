@@ -15,8 +15,8 @@ body #login {
     padding: .4rem 1rem .8rem 1rem;
     display: flex;
     flex-direction: column;
-    width: 30%;
-    min-width: 19rem;
+    width: 40%;
+    min-width: 22.5rem;
     margin: 0 auto;
     align-items: center;
     border: 2px solid #020261; }
@@ -38,8 +38,10 @@ body #login {
       font-size: 1.4rem;
       margin: .6rem;
       padding: .5rem;
-      transition: box-shadow 0.35s ease-in-out; }
+      transition: box-shadow 0.35s ease-in-out;
+      width: 80%; }
     body #login #new-form input[type='submit'] {
+      width: 135px;
       border-radius: 10px;
       border: 2px solid #871b1b;
       color: #de2312;
@@ -51,22 +53,24 @@ body #login {
       bottom: 10px; }
       body #login #new-form span.forgot-pass a {
         font-size: 1.3rem;
-        color: #225647; }
+        color: #225647;
+        cursor: context-menu; }
     body #login #new-form #forget-mail {
       margin-top: -.1rem;
       width: 50%;
       height: 1rem;
       font-size: 1rem;
       border: 2px solid grey;
-      border-radius: .5rem; }
+      border-radius: .5rem;
+      cursor: pointer; }
   body #login form.hide {
     box-shadow: 0 0 20px 2px #af74a3;
     background: linear-gradient(45deg, #ca8c8c, #bdc56c00);
     padding: .4rem 1rem .8rem 1rem;
     display: flex;
     flex-direction: column;
-    width: 30%;
-    min-width: 19rem;
+    width: 40%;
+    min-width: 22.5rem;
     margin: 0 auto;
     align-items: center;
     border: 2px solid #020261;
@@ -78,7 +82,7 @@ body #login {
       font-size: 1rem;
       font-family: sans-serif;
       text-align: center;
-      width: 55%;
+      width: 230px;
       border: 2px solid #566e84;
       outline: none;
       border-radius: .5rem;

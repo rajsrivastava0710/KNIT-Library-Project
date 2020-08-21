@@ -1,0 +1,73 @@
+div{
+	&.get-all-user{
+		margin-top:1rem;
+		text-align: center;
+		a{
+			color: white;
+		}
+	}
+	&.all-user-container{
+		display: flex;
+	    flex-wrap: wrap;
+    	justify-content: space-around;
+    	margin-top: 25px;
+
+    	.error-msg{
+    		font-family: monospace;
+    		color: brown;
+    	}
+		
+		.single-user-container{
+			width::330px;
+			word-break:break-word;
+			box-sizing: border-box;
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		    text-align: center;
+		    margin: 10px;
+		    border: 2px solid #a14c4c;
+		    box-shadow: 0 0 15px 3px #c66978;
+
+		    div:nth-child(odd){
+		    	width: 100%;
+			    background: #bae2af;
+			    padding: 8px;
+			    a{
+			    	color:#af3a40;
+			    }
+			}
+			div:nth-child(even){
+		    	width: 100%;
+			    background: #5d5151;
+			    padding: 8px;
+			    color:#e2d6d6;
+			}
+		}
+	}
+	form{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		input{
+			width: 300px;
+			margin: 20px;
+		    padding: 5px;
+		    text-align: center;
+		    font-size: 1.2rem;
+		    box-sizing: border-box;
+		    outline: none;
+		    border-right: 8px;
+		    border: 2px solid #6b6bad;
+		    transition: all .4s ease-in-out;
+
+		    &:focus{
+		    	border: 2px solid blue;
+		    	box-shadow: 0 0 8px 6px lightblue;
+		    }
+		}
+		button{
+
+		}
+	}
+}

@@ -6,9 +6,9 @@
 
 <div id='form-container'>
 <form action = '/users/profile/<%= editUser.id %>/update' method='post'>
+    <% if(locals.user.email == locals.adminEmail){ %>
 	<input type='text' name='name' placeholder='Your Name' value= '<%= editUser.name %>'>
 	<input type='number' name='rollNo' placeholder='Your Roll Number' value= '<%= editUser.rollNo %>'>
-	<input type='number' name='mobile' placeholder='Your MobileNumber' value= '<%= editUser.mobile %>'>
 	<input type='text' name='branch' placeholder='Your branch' value= '<%= editUser.branch %>'>
 	
 	<select name="course">                        
@@ -29,6 +29,8 @@
             <option value="M Tech">M Tech</option>
             <% } %>
     </select>
+    <% } %>
+    <input type='number' name='mobile' placeholder='Your MobileNumber' value= '<%= editUser.mobile %>'>
     <button>Update</button>
 </form>
 </div>

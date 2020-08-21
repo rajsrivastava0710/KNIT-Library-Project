@@ -1,65 +1,100 @@
 <link rel="stylesheet" type="text/css" href="/css/book_detail.css">
+<div class='detail-page-container'>
+	<div class='left-container'>
+		<div class='book-detail-container'>
+			<div class='heading_'>Book Details</div>
+			<div class='book-detail'>
+				<div><span>Book</span> : <span><%= book.name %></span></div>
+				<div><span>ISBN Number</span> : <span><%= book.isbn %></span></div>
+				<div><span>Author</span> : <span><%= book.writer %></span></div>
+				<div><span>Publication</span> : <span><%= book.publication %></span></div>
+				<% if(book.category){ %>
+					<div><span>Category</span> : <span><%= book.category %></span></div>
+				<% } %>
+			</div>
+		</div>
 
-<div>Book : <%= book.name %></div>
-<div>ISBN Number : <%= book.isbn %></div>
-<div>Author : <%= book.writer %></div>
-<div>Publication : <%= book.publication %></div>
-<div>Category : <%= book.category %>
-<% if(book.isAvailable && locals.user.email == locals.adminEmail){ %>
-<!-- only admin can avail it -->
-<div>
-	<form action = '/library/book/<%=book.id %>/avail' method='get'>
-		<input type='email' name='email' placeholder = 'Issuer E-Mail ID' required>
-		<button>Avail Book</button>
-	</form>
-</div>
-<% } %>
-<% if(!book.isAvailable){ %>
-<div>
-	<button><a href='/library/book/<%= book._id %>/notify'>Notify when free</a></button>
-</div>
-<% } %>
-<% if(book.owner){ %>
-<div>
-	<b>Current Owner</b>:
-	<%= book.owner.user.name %> : <small><%= moment(book.owner.createdAt).format('lll') %></small>
-</div>
-<% } %>
-<% if(locals.user && book.creator == locals.user.id){ %>
-<div><button><a href='/library/book/<%= book.id %>/edit'>Update Book</a></button></div>
-<% } %>
 
-<div>
-<div>All available copies</div>
-<% for(copy of copies){ %>
-	<a href='/library/book/<%= copy.id %>'><%= copy.isbn %></a>
-	<small><%= copy.isAvailable %></small>
-<% } %>
+		<% if(locals.user.email == locals.adminEmail){ %>
+			<div class='update-container'>
+				<button class='btn btn-success btn-lg'>
+					<a href='/library/book/<%= book.id %>/edit'>Update Book</a>
+				</button>
+			</div>
+		<% } %>
+
+		<% if(book.owner){ %>
+			<div class='current-owner-container'>
+				<div class='heading_' style="color: #805444;">Current Owner</div>
+				<div class='current_owner'>
+				<div><a href='/users/profile/<%= book.owner.user.id %>'><%= book.owner.user.name %></a></div> 
+				<div><%= moment(book.owner.createdAt).format('lll') %></div>
+				</div>
+			</div>
+		<% } %>
+		
+		<% if(!book.isAvailable){ %>
+			<div class='notify-container'>
+				<% if(!alreadyNotified){ %>
+					<button id='notify-btn' class='btn btn-danger btn-lg'><a href='/library/book/<%= book._id %>/notify' title='You will be notified , once this book is available'>Notify when free</a></button>
+				<% }else{ %>
+					<span style="color: red;font-size: 1.8rem;font-family: monospace;font-weight: 600;letter-spacing: -1px;font-style: italic;">*You will be notified via mail, once this book is available</span>
+				<% } %>
+			</div>
+		<% } %>
+	
+
+		<% if(book.isAvailable && locals.user.email == locals.adminEmail){ %>
+			<!-- only admin can avail it -->
+			<div class='avail-container'>
+				<form action = '/library/book/<%=book.id %>/avail' method='get'>
+					<div>
+						<input type='email' name='email' placeholder = 'Issuer E-Mail ID' required>
+					</div>
+					<div>
+						<button class="btn btn-primary btn-lg">Avail Book</button>
+					</div>
+				</form>
+			</div>
+		<% } %>
+	
+	</div>
+
+	<div class='right-container'>
+		<div class='available-copies-container'>
+		<div class='heading_' style='color:#1c7532;'>All available copies</div>
+			<div class='available-copies'>
+				<div class='table-head'>
+					<span>ISBN Number</span>
+					<span>Available</span>
+				</div>
+				<% for(copy of copies){ %>
+				<div>
+					<span>
+						<a href='/library/book/<%= copy.id %>'><%= copy.isbn %></a>
+					</span>
+					<span><%= copy.isAvailable %></span>
+				</div>
+				<% } %>
+			</div>
+		</div>
+
+		<div class='past-user-container'>
+			<div style='color:#c04e36;' class='heading_'>Past Users</div>
+				<div class='past-user'>
+					<% for(record of book.pastOwner){ %>
+						<div style='display: flex;'>
+							<a style='margin-right:5px;' href='/users/profile/<%= record.user.id %>'><%= record.user.name %></a> : 
+							<small style="margin-left: 5px;position: relative;top:5px;"><%= moment(record.createdAt).format('lll') %></small>
+						</div>
+					<% } %>
+					<% if(book.pastOwner.length==0){ %>
+						<div class='empty-msg' >No Past User till now!</div>
+					<% } %>
+				</div>
+		</div>
+	</div>
+
 </div>
-<!-- 
-<div id='comment-container'>
-<% if(locals.user){ %>
-<form id='new-comment-form' action="/library/book/<%= book.id %>/comment" method='Post'>
-	<input type='text' name='content' placeholder='Write your comment' required>
-	<button>Comment</button>
-</form>
-<% } %>
-<ul>
-	<% for(comment of book.comments){ %>
-		<li id='comment-<%=comment.id %>'>
-			<% if(locals.user.id == comment.user.id){ %>
-			<a class='delete-comment-btn' href='/library/book/<%= book.id %>/comment/<%= comment.id %>/destroy'>X</a>
-			<% } %>
-			<%= comment.content %> : <%= comment.user.name %>
-			<br>
-			<small><%= moment(comment.createdAt).fromNow() %></small> 
-		</li>
-	<% } %>
-</ul>
-</div> -->
-<small style='color:green'>Past Users</small>
-<% for(record of book.pastOwner){ %>
-	<div><a href='/users/profile/<%= record.user.id %>'><%= record.user.name %></a> : <small><%= moment(record.createdAt).format('lll') %></small></div>
-<% } %>
 
 <script type="text/javascript" src='/js/book_comments.js'></script>

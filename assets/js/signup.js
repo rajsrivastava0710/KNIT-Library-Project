@@ -5,9 +5,9 @@ let placeholder = $('.placeholder');
 confirm_pass.hide();
 warning.hide();
 placeholder.hide();
-let input = $('#new-form input');
+let input = $('#new-form .input-part');
 for(let i=0;i<input.length-1;i++){
-	if(i==3){ continue; }
+	if(i==4){ break; }
 	input.eq(i).on('focus',function(){
 		placeholder.eq(i).slideDown(500);
 	});

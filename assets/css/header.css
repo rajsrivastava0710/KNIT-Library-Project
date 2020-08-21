@@ -27,7 +27,7 @@ header {
       header .default-flex ._80per #nav-user:hover {
         background-color: #89d8c3; }
       header .default-flex ._80per #nav-user {
-        transition: background .8s;
+        transition: background .8s ease-in-out;
         /*background-color: #254cd4;*/
         background-color: #5f7ff1;
         font-weight: 600;
@@ -47,7 +47,84 @@ header {
             border: 1px solid #3b3b75db;
             object-fit: cover;
             box-shadow: 0 0 4px 1px #c73821; }
+      header .default-flex ._80per #book-text {
+        background-color: #d1e1a4;
+        transition: all .5s ease-in-out;
+        font-weight: 600;
+        font-family: sans-serif; }
+        header .default-flex ._80per #book-text:hover {
+          background: #b9db58; }
       header .default-flex ._80per .small-margin {
         padding: 1rem 1rem 1rem 1rem; }
         header .default-flex ._80per .small-margin .black-font {
           color: black; }
+  header span.hamburger-icon {
+    position: absolute;
+    padding: 0 10px 0 10px;
+    align-self: flex-end;
+    top: 5px;
+    right: 14px;
+    font-size: 3.1rem;
+    box-sizing: content-box;
+    cursor: pointer;
+    display: none; }
+    header span.hamburger-icon i {
+      color: #545475; }
+
+div.collapsed-navbar {
+  /*display: none;*/
+  flex-direction: column;
+  align-items: center;
+  width: 0;
+  position: fixed;
+  height: 100%;
+  right: 0;
+  z-index: 100;
+  background: linear-gradient(35deg, #c13e3ebd, #646294e0, #5bb253d6);
+  transition: .25s width ease-in-out; }
+  div.collapsed-navbar div {
+    box-sizing: border-box;
+    /*margin-bottom: 10px;*/
+    font-size: 2rem;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    transition: .3s all ease-in-out; }
+    div.collapsed-navbar div#collapsed-searchbar {
+      display: flex;
+      padding: 0; }
+    div.collapsed-navbar div a {
+      font-weight: 600;
+      color: #0e223b; }
+    div.collapsed-navbar div input[type='text'] {
+      /*height: 100%;*/
+      font-size: 1.4rem;
+      width: 16rem;
+      box-sizing: border-box;
+      padding: 4px;
+      border: 2px solid #2c1776;
+      outline: none;
+      font-family: cursive; }
+    div.collapsed-navbar div button[type='submit'] {
+      cursor: pointer;
+      width: 35px;
+      border: 2px solid #2c1776;
+      border-left: 0;
+      outline: none;
+      /*background: bottom;*/ }
+  div.collapsed-navbar div:hover {
+    background: white; }
+    div.collapsed-navbar div:hover a {
+      color: black; }
+
+div.show {
+  /*display: flex;*/
+  width: 290px; }
+
+@media only screen and (max-width: 700px) {
+  header .default-flex ._80per {
+    /*div{*/
+    display: none;
+    /*}*/ }
+  header span.hamburger-icon {
+    display: block; } }

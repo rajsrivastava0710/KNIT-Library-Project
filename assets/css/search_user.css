@@ -1,0 +1,55 @@
+div.get-all-user {
+  margin-top: 1rem;
+  text-align: center; }
+  div.get-all-user a {
+    color: white; }
+
+div.all-user-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 25px; }
+  div.all-user-container .error-msg {
+    font-family: monospace;
+    color: brown; }
+  div.all-user-container .single-user-container {
+    width: 330px;
+    word-break: break-word;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    border: 2px solid #a14c4c;
+    box-shadow: 0 0 15px 3px #c66978; }
+    div.all-user-container .single-user-container div:nth-child(odd) {
+      width: 100%;
+      background: #bae2af;
+      padding: 8px; }
+      div.all-user-container .single-user-container div:nth-child(odd) a {
+        color: #af3a40; }
+    div.all-user-container .single-user-container div:nth-child(even) {
+      width: 100%;
+      background: #5d5151;
+      padding: 8px;
+      color: #e2d6d6; }
+
+div form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  div form input {
+    width: 300px;
+    margin: 20px;
+    padding: 5px;
+    text-align: center;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+    outline: none;
+    border-right: 8px;
+    border: 2px solid #6b6bad;
+    transition: all .4s ease-in-out; }
+    div form input:focus {
+      border: 2px solid blue;
+      box-shadow: 0 0 8px 6px lightblue; }

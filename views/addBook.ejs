@@ -6,12 +6,17 @@
 
 <div id='form-container'>
 <form action = '/library/add-book/create' method = 'POST'>
+	<span class='placeholder'>Book Name</span>
 	<input type = 'text' placeholder='Enter book name' name = 'name' required>
+	<span class='placeholder'>Writer Name</span>
 	<input type = 'text' placeholder='Enter writer name' name = 'writer' required>
+	<span class='placeholder'>Publication</span>
 	<input type = 'text' placeholder='Enter publication' name = 'publication' required >
+	<span class='placeholder'>ISBN Number</span>
 	<input type = 'number' placeholder='Enter ISBN Number' name = 'isbn' required>
 	
 	<!-- <input type = 'text' placehoalder='Enter category of book' name = 'category' required> -->
+	<span class='placeholder'>Book Category</span>
 	<select name="category" id="category">                        
             <option value="" style='display: none'>Choose A Category</option>
             <option value="Literature">Literature</option>
@@ -20,6 +25,7 @@
             <option value="Astrology">Astrology</option>
             <option value="Academic Subject">Academic Subject</option>
     </select>
+    <span class='placeholder'>Cover Picture</span>
     <input type = 'text' placeholder='Cover Page Image URL' name = 'coverPage'>
 	<button>Submit</button>
 </form>

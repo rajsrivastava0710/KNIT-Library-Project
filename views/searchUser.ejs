@@ -1,17 +1,30 @@
-<a href='/users'>All Users</a>
+<link rel="stylesheet" type="text/css" href="/css/search_user.css">
+
+<div class='get-all-user'>
+	<button class='btn btn-info btn-lg'><a href='/users'>Get All Users</a></button>
+</div>
+
+<div>
 <form action="/users" method="get">
 	<input type='email' name='email' placeholder="User's E-Mail ID" required>
-	<button>Search</button>
+	<button class='btn btn-outline-success btn-lg'>Search</button>
 </form>
+</div>
 
-<% if(search_user && search_user.length>0){ %>
-<% for(i of search_user){ %>
-<div>
-<a href='/users/profile/<%= i._id %>'><%= i.name %></a> : <%= i.email %>
-</div>
+
+<div class='all-user-container'>
+<% if(search_user[0] != null){ %>
+	<% for(i of search_user){ %>
+		<div class='single-user-container'>
+			<div><a href='/users/profile/<%= i._id %>'><%= i.name %></a></div>
+			<div>
+				<%= i.email %>
+			</div>
+		</div>
+	<% } %>
+
+<% }else{ %>
+	<div class='error-msg'>No such User exists..!</div>
 <% } %>
-<% }else if(search_user){ %>
-<div>
-<a href='/users/profile/<%= search_user.id %>'><%=search_user.name %></a> : <%= search_user.email %>
+
 </div>
-<% } %>

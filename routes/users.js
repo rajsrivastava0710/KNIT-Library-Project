@@ -6,7 +6,7 @@ const passport = require('passport');
 
 // const middleware = require('../config/middleware.js');
 
-const {allowAdminAccessOnly} = require('../config/middleware.js');
+const {allowAdminAccessOnly, allowAdminAndOwnerAccessOnly} = require('../config/middleware.js');
 
 const userController = require('../controllers/user_controller');
 
@@ -14,11 +14,11 @@ console.log('User router loaded');
 
 router.get('/',passport.checkAuthentication, allowAdminAccessOnly, userController.searchUser);
 
-router.get('/profile/:id' , passport.checkAuthentication , userController.profile);
+router.get('/profile/:id' , passport.checkAuthentication , allowAdminAndOwnerAccessOnly, userController.profile);
 
-router.get('/profile/:id/edit',passport.checkAuthentication,userController.editProfile);
+router.get('/profile/:id/edit',passport.checkAuthentication, allowAdminAndOwnerAccessOnly, userController.editProfile);
 
-router.post('/profile/:id/update',passport.checkAuthentication,userController.updateProfile);
+router.post('/profile/:id/update',passport.checkAuthentication, allowAdminAndOwnerAccessOnly, userController.updateProfile);
 
 // router.get('/profile/:id/delete',userController.deleteProfile);
 

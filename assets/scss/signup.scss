@@ -17,8 +17,8 @@ body{
 			padding:.4rem 1rem;
 			display:flex;
 			flex-direction:column;
-			width: 30%;
-			min-width: 19rem;
+			width: 40%;
+			min-width: 22.5rem;
 			margin: 0 auto;
 			align-items: center;
 			border:2px solid #020261;
@@ -44,7 +44,7 @@ body{
 			input:focus{
 			box-shadow: 0 0 10px 0.1em #76b0cc;
 			}
-			input{
+			input,select{
 				font-family: serif;
 				border-radius: .9rem;
 			    border: 2px solid slateblue;
@@ -54,8 +54,14 @@ body{
 				margin:.6rem;
 				padding:.5rem;
 				transition: 0.35s ease-in-out;
+				box-sizing: border-box;
+				width: 80%;
+			}
+			select{
+				opacity: .85;
 			}
 			input[type='submit']{
+				width: 135px;
 				border-radius: 10px;
 			    border: 2px solid #871b1b;
 			    color: #de2312;

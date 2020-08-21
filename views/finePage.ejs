@@ -1,13 +1,19 @@
-<div>
-<h1>Fine Calculator</h1>
-</div>
-
+<link rel="stylesheet" type="text/css" href="/css/fine_calculator.css">
+<div id='fine-heading'>Fine Calculator</div>
+<div id='fine-form'>
 <form>
+<div>
 <label>Issue Date</label>
 <input id='issue' type='date' name='issueDate' placeholder='Expected Issue Date' required>
+</div>
+<div>
 <label>Return Date</label>
 <input id='return' type='date' name='returnDate' placeholder='Expected Return Date' required>
+</div>
 </form>
-<button id='find'>Find</button>
+</div>
+<div id='fine-btn'>
+<button id='find' class='btn btn-outline-danger btn-lg'>Find</button>
+</div>
 <div id='result'></div>
 <script type="text/javascript" src='/js/fine_calculate.js'></script>

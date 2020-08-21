@@ -1,4 +1,9 @@
 div{
+	&#info-msg{
+		padding: 15px;
+		padding-top: 1px;
+		font-size: 1.9rem;
+	}
 	&.query-btn{
 		width: 100%;
 		display: flex;
@@ -16,17 +21,56 @@ div{
 			position: relative;
 			/*right: 1rem;*/
 			top:1rem;
+			&#all{
+				a{
+					color: white;
+				}
+			}
 		}
 	}
 }
 
 table{
+	max-width:95% !important;
+	font-size:1.6rem;
+	margin:16px auto !important;
+	box-sizing:border-box;
+	margin-top: 3.7rem;
 	width: 100%;
 	text-align: center;
+	tr{
 	th{
 		width: 16.66%;
+		vertical-align: middle !important;
 	}
 	td{
 		width: 16.66%;
+		vertical-align: middle !important;
+	}
+	}
+}
+
+@media all and (max-width: 700px){
+	table{
+		font-size: 1.3rem;
+	}
+	button{
+		font-size: 1.3rem !important;
+	}
+	#info-msg{
+		font-size: 1.6rem !important;
+	}
+}
+
+
+@media all and (max-width: 530px){
+	table{
+		font-size: 1rem;
+	}
+	button{
+		font-size: 1rem !important;
+	}
+	#info-msg{
+		/*font-size: 1.6rem !important;*/
 	}
 }

@@ -14,15 +14,15 @@ router.get('/',libraryController.library);
 
 router.get('/book/:id',passport.checkAuthentication,libraryController.bookDetails);
 
-router.get('/book/:id/edit',passport.checkAuthentication,libraryController.editBook);
+router.get('/book/:id/edit',passport.checkAuthentication,allowAdminAccessOnly,libraryController.editBook);
 
-router.post('/book/:id/update',passport.checkAuthentication,libraryController.updateBook);
+router.post('/book/:id/update',passport.checkAuthentication,allowAdminAccessOnly,libraryController.updateBook);
 
 // router.get('/book/:id/delete',passport.checkAuthentication,libraryController.deleteBook);
 
 router.get('/book/:id/notify',passport.checkAuthentication,libraryController.notifyBook);
 
-router.get('/book/:id/avail',passport.checkAuthentication,libraryController.availBook);
+router.get('/book/:id/avail',passport.checkAuthentication, allowAdminAccessOnly, libraryController.availBook);
 
 router.get('/book/:id/return',passport.checkAuthentication, allowAdminAccessOnly, libraryController.returnBook);
 

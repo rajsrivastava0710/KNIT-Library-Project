@@ -10,19 +10,35 @@
 	</div>
 </form>
 </div>
+
+<div class='heading_'>Library Books</div>
+
 <% if(books.length==0){ %>
 	<div class= 'empty-message'>
-		We have no books at the moment
+		We have no such books at the moment
 	</div>
 <% } %>
 <div id='book-collection-container'>
 <% for(book of books){ %>
-	<div class='book-container'>
-		<div><%= book.name %></div>
+	<div class='full-book-container'>
+	<div class='cover-pic-container'>
+	<% if(book.coverPage){ %>
+		<div class='book-container' style='background: url(<%= book.coverPage %>);background-size: cover;background-position: center;'>
+	<% } else { %>
+		<div class='book-container' style='background: url(https://www.thisiscolossal.com/wp-content/uploads/2014/03/120430.gif);background-size: cover;background-position: center;'>
+	<% } %>	
+	
+		<!-- <div><%= book.name %></div>
 		<div><%= book.writer %></div>
-		<div><%= book.publication %></div>
+		<div><%= book.publication %></div> -->
 		<!-- Available: <%= book.isAvailable %><br> -->
-		<div><button><a href='/library/book/<%= book.id %>'>Click Here</a></button></div>
+		<div><button><a href='/library/book/<%= book.id %>'>Open</a></button></div>
+	</div>
+	</div>
+	<div class='book-detail'>
+		<span><%= book.name.length>35?book.name.substr(0,30)+"...":book.name %></span>
+		<Span><%= book.writer %></Span>
+	</div>
 	</div>
 <% } %>
 </div>

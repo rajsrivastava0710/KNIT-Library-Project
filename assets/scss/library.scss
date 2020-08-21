@@ -1,12 +1,21 @@
 div{
 	box-sizing: border-box;
 	&#page-container{
+		.heading_{
+			font-size: 2.8rem;
+		    color: #37497d;
+		    text-decoration: underline;
+		    font-family: cursive;
+		    text-align:center;
+		    text-shadow: 4px -4px 10px #4d6271;
+		}
+		padding: 15px;
 		display: flex;
 		flex-direction: column;
 		#form-container{
 			width:100%;
 			text-align: center;
-			margin:1.2rem auto;
+			margin:1.2rem auto .2rem auto;
 			input[type='text']{
 				width: 35%;
 			    min-width: 300px;
@@ -53,24 +62,91 @@ div{
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-evenly;
+			align-items: center;
+			.full-book-container{
+				display: flex;
+				flex-direction: column;
+				margin: 1.2rem .5rem;
+				width:320px;
+				height:445px;
+				border: 2px solid #6a6886;
+			.cover-pic-container{
+				overflow: hidden;
+				width: 100%;
 			.book-container{
 				height:22rem;
 				min-width: 300px;
 				box-sizing: border-box;
-				width:30%;
-				border:2px solid red;
+				width:100%;
 				word-break: break-word;
 				padding:1rem;
-				margin: 1.2rem .5rem;
+				margin: 0;
 				text-align: center;
 				display: flex;
 				justify-content: space-between;
 				flex-direction: column;
 				flex-wrap: wrap;
+				transition: all .7s ease-in-out;
+				box-sizing: border-box;
 				div{
+					margin: auto;
 					width: 100%;
+					button{
+						width: 55%;
+						font-size: 1.3rem;
+						border-radius: 5px;
+						outline: none;
+						padding: 5px;
+						background: #eae9e9;
+						border: 2px solid cadetblue;
+						transition: all 0.6s ease-in-out;
+						opacity: 0;
+						a{
+							color:#5a2d84;
+							transition: color 0.4s ease-in-out;
+						}
+					}
+					button:hover,click{
+						background: black;
+						border: 2px solid #125355;
+						a{
+							color:white;
+						}
+					}
+					button:hover{
+
+					}
 				}
 			}
+			.book-container:hover{
+				transform:scale(1.05);
+				button{
+					opacity: 100%;
+				}
+			}
+			}
+			.book-detail{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				font-size: 1.6rem;
+				word-break: break-word;
+				padding: 10px;
+				background: #888787;
+				color: white;
+				text-align: center;
+				span:nth-child(1){
+					font-weight: 700;
+					font-family: monospace;
+					font-size: 1.75rem;
+				}
+				span:nth-last-child(1){
+					font-family: serif;
+					font-style:italic;
+					color:#e3eae9;
+				}
+			}
+		}
 		}
 	}
 }

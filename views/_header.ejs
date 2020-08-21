@@ -7,10 +7,12 @@
 	
 		<div class='_80per reverse-flex'>
 		<% if(locals.user){ %>
-
+		<div class='small-margin' id='book-text'>
+			<a style='color: #149f78;' class='black-font' href='/library'>Books</a>
+		</div>
  		<% if(locals.user.email == locals.adminEmail){ %>
  		<div id='nav-user' class='small-margin'>
-			<a style='color: #ad1c1c;' class='black-font' href='/users/profile/<%= user._id %>'>ADMIN MODE</a>
+			<a style='color: #ad1c1c;' class='black-font' href='/users/profile/<%= user._id %>'>ADMIN</a>
 		</div>
 		<% }else{ %>
  		<div id='nav-user' class='small-margin'>
@@ -33,7 +35,33 @@
 		<% } %>
 		</div>
 	</div>
+	<span class='hamburger-icon'>
+	<i class="fa fa-align-justify"></i>
+	</span>
 </header>
+<div class='collapsed-navbar'>
+		<% if(locals.user){ %>
+		<div><a href='/users/profile/<%= locals.user.id %>'>
+			<% if(locals.user.email == locals.adminEmail){ %>
+				<span style='color: #ad1c1c;'>ADMIN</span>
+			<% }else{ %>
+				<span style='color: #ad1c1c;'><%= locals.user.name.split(' ')[0] %></span>
+			<% } %>
+			</a>
+		</div>
+		<div><a href='/library'>
+				<span>Books</span>
+			</a>
+		</div>
+		<div><a href='/users/remove-session'>
+				<span>Logout</span>
+			</a>
+		</div>
+		<% }else{ %>
+		<div><a href='/users/login'>SignIn</a></div>
+		<div><a href='/users/signup'>SignUp</a></div>
+		<% } %>
+</div>
 <script>
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {

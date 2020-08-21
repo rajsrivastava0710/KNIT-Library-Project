@@ -2,12 +2,17 @@
 	display: flex;
     flex-direction: column;
     align-items: center;
+    padding:15px;
     
     #addPage-header,#update-user-header{
     margin: 20px;
     padding: 5px;
     font-size: 2.8rem;
-    font-family: sans-serif;
+    color: #37497d;
+    text-decoration: underline;
+    font-family: cursive;
+    text-align:center;
+    text-shadow: 4px -4px 10px #4d6271;
     }
     #form-container{
     	width: 55%;
@@ -15,7 +20,13 @@
     		display: flex;
     		flex-direction: column;
     		align-items: center;
-
+            .placeholder{
+                font-size: 1.7rem;
+                color: #b73535;
+                font-family: monospace;
+                font-style: italic;
+                text-shadow: 0 0 8px #d0c51b;
+            }
     		input,select{
     			width: 330px;
 			    height: 40px;
@@ -29,7 +40,7 @@
 
 			    &:focus{
 			    	border: 2px solid blue;
-			    	box-shadow: 0 0 10px 10px lightblue;
+			    	box-shadow: 0 0 8px 6px lightblue;
 			    }
     		}
     		select{

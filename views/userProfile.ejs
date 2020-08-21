@@ -2,6 +2,7 @@
 
 <div id='profile-container'>
 <div id='profile-detail-container'>
+<% if(profile_user.email != locals.adminEmail){ %>
 <div id='profile-heading'>
 	<% if(user._id .equals(profile_user._id)){ %>
 		My Profile
@@ -11,26 +12,26 @@
 </div>
 <div id='profile-detail'>
 <% if(profile_user.name){ %>
-<div><span class='user-detail-property'>Name</span> : <span class='user-detail-value'><%= profile_user.name %></span></div>	
+<div><span class='user-detail-property'>Name</span><span class='user-detail-value'><%= profile_user.name %></span></div>	
 <% } %>
 <% if(profile_user.email){ %>
-<div><span class='user-detail-property'>E-Mail</span> : <span class='user-detail-value'><%= profile_user.email %></span></div>	
+<div><span class='user-detail-property'>E-Mail</span><span class='user-detail-value'><%= profile_user.email %></span></div>	
 <% } %>
 <% if(profile_user.rollNo){ %>
-<div><span class='user-detail-property'>Roll Number</span> : <span class='user-detail-value'><%= profile_user.rollNo %></span></div>	
+<div><span class='user-detail-property'>Roll Number</span><span class='user-detail-value'><%= profile_user.rollNo %></span></div>	
 <% } %>
 <% if(profile_user.mobile){ %>
-<div><span class='user-detail-property'>Mobile</span> : <span class='user-detail-value'><%= profile_user.mobile %></span></div>	
+<div><span class='user-detail-property'>Mobile</span><span class='user-detail-value'><%= profile_user.mobile %></span></div>	
 <% } %>
 <% if(profile_user.branch){ %>
-<div><span class='user-detail-property'>Branch</span> : <span class='user-detail-value'><%= profile_user.branch %></span></div>	
+<div><span class='user-detail-property'>Branch</span><span class='user-detail-value'><%= profile_user.branch %></span></div>	
 <% } %>
 <% if(profile_user.course){ %>
-<div><span class='user-detail-property'>Course</span> : <span class='user-detail-value'><%= profile_user.course %></span></div>	
+<div><span class='user-detail-property'>Course</span><span class='user-detail-value'><%= profile_user.course %></span></div>	
 <% } %>
 </div>
 </div>
-<% if(locals.user.id == profile_user.id){ %>
+<% if(locals.user.id == profile_user.id || locals.user.email == locals.adminEmail){ %>
 <div id='update-profile-container'>
 <button><a href='/users/profile/<%= profile_user.id %>/edit'>Update Profile</a></button>
 </div>
@@ -38,29 +39,52 @@
 <div id='books-record-container'>
 
 <div id='past-books-container'>
-<div>Past Books</div>
-<div>
+<div><span>Past Books</span></div>
+<div class='past-book-details'>
+	<% if(profile_user.pastBooks.length<1){ %>
+	<div class='empty-msg'>You have no past books right now...</div>
+	<% } %>	
 	<% for(record of profile_user.pastBooks){ %>
-		<div class='book-detail'><%= record.book.name %> : <small><%= moment(record.createdAt).format('lll') %></small></div>
+		<div class='book-detail'><span><%= record.book.name %></span>&nbsp;:&nbsp; <small><%= moment(record.createdAt).format('lll') %></small></div>
 	<% } %>
 </div>
 </div>
 
 <div id='issued-books-container'>
-<div>Issued Books</div>
-<div>
+<div><span>Issued Books</span></div>
+<div class='issue-book-details'>
+<% if(profile_user.availedBooks.length<1){ %>
+	<div class='empty-msg'>You have no availed books right now...</div>
+<% } %>	
 <% for(record of profile_user.availedBooks){ %>
-	<div class='book-detail'><%= record.book.name %> : <small><%= moment(record.createdAt).format('lll') %></small>
+	<div class='book-detail'>
+			<span><%= record.book.name %></span>
+			&nbsp;:&nbsp; 
+			<small><%= moment(record.createdAt).format('lll') %></small>
 		<% if(locals.user.email == locals.adminEmail){ %>
 		<!-- only admin can return it -->
+		<!-- <div class='return-btn-container'> -->
 		<form action='/library/book/<%=record.book.id %>/return' method='get'>
 			<input type = 'hidden' name='user_id' value = '<%= profile_user._id %>'>
 			<button>Return</button>
 		</form>
+		<!-- </div> -->
 		<% } %>
+	</div>
+<% } %>
+<% }else{ %>
+	<div id='profile-heading'>
+	ADMIN CONTROLS
+	</div>
+	<div class='admin-items'>
+		<div><a href='/library/add-book'>Add Book</a></div>
+		<div><a href='/library/userlist'>Issue List</a></div>
+		<div><a href='/users'>Search User</a></div>
 	</div>
 <% } %>
 </div>
 </div>
 
 </div>
+
+<script type="text/javascript" src='/js/user_profile.js'></script>

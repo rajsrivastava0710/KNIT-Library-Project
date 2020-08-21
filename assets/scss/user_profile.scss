@@ -1,4 +1,5 @@
 div{
+	cursor: context-menu;
 	&#profile-container{
 		display: flex;
 		flex-direction: column;
@@ -12,25 +13,59 @@ div{
 			    margin: 5px 0 20px 0;
 			    text-shadow: 0 0 10px #d06767;
 			    color: #261111;
+			    text-align:center;
 			    border-bottom: 4px solid #4a1711db;
+			}
+			.admin-items{
+				margin-top: 26px;
+				margin-bottom: 20px;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				width: 100%;
+				div{
+					display: flex;
+				    justify-content: center;
+				    align-items: center;
+				    width: 200px;
+				    height: 200px;
+				    border: 2px solid #324d97;
+				    border-radius: 50%;
+				    background-color: #6fbaca;
+				    margin: auto;
+					a{
+					    color: #ae3a3a;
+					    font-weight: 700;
+					    transition: all 0.6s ease-in-out;
+					    &:hover{
+					    	transform:scale(1.1);
+					    	color:red;
+					    }
+					}
+				}
 			}
 			#profile-detail{
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: space-between;
+			justify-content: space-around;
 			&>div{
-				width: 40%;
-				min-width: 460px;
+				width: 30%;
+				min-width: 370px;
+				align-items: center;
+				display: flex;
+				flex-direction: column;
 				/*text-align: center;*/
 				margin:20px;
 				span{
 					&.user-detail-property{
+						border-bottom: 3px solid #667b82;
 						font-size: 1.2em;
 						font-weight: 600;
 					}
 					&.user-detail-value{	
 						font-size: 1.1em;
-
+						font-family: monospace;
+ 					   padding-top: 8px;
 					}
 				}
 			}
@@ -64,16 +99,125 @@ div{
 			flex-wrap: wrap;
 			justify-content: space-around;
 			#issued-books-container{
+				margin: 30px 5px;
 				width: 40%;
 				text-align: center;
-				min-width: 375px;
+				min-width: 480px;
+				&>div:first-of-type{
+					color: #8e4242;
+					font-weight:600;
+					font-size: 1.3em;
+				    letter-spacing: 5px;
+					span{
+					cursor: pointer;
+					}
+				}
+				.issue-book-details{
+					margin-top: 20px;
+					text-align: left;
+					border: 2px solid black;
+					background: grey;
+					display: none;
+					.book-detail{
+						justify-content: center;
+					}
+					&>div:nth-child(odd){
+						background: white;
+					}
+					&>div:nth-child(even){
+						background: grey;
+					}
+				}
 
 			}
 			#past-books-container{
 				width: 40%; 
 				text-align: center;
-				min-width: 375px;
+				min-width: 480px;
+				margin: 30px 5px;
+				&>div:first-of-type{
+					font-weight:600;
+					color: #3e3e7c;
+					font-size: 1.3em;
+				    letter-spacing: 5px;
+					span{
+					cursor: pointer;
+					}
+				}
+				.past-book-details{
+					margin-top: 20px;
+					text-align: left;
+					display: none;
+					border: 2px solid black;
+					&>div:nth-child(odd){
+						background: white;
+					}
+					&>div:nth-child(even){
+						background: grey;
+					}
+				}
 			}
+			div{
+				div{
+					.empty-msg{
+						padding: 8px 16px;
+						font-style: italic;
+						font-family: monospace;
+						font-size: 1.7rem;
+					}
+					.book-detail{
+						padding: 8px 16px;
+						display: flex;
+						align-items: center;
+						flex-wrap: wrap;
+						span{
+							font-weight: 600;
+						}	
+						small{
+							font-size: .7em;
+							font-style: italic;
+						}
+						form{
+							display: flex;
+							flex-wrap: wrap;
+						    width: 100%;
+						    justify-content: center;
+						    button{
+					    	    width: 137px;
+							    height: 38px;
+							    font-size: .65em;
+							    background: #38c899;
+							    outline: none;
+							    border: 2px solid #373e76;
+							    color: white;
+							    border-radius: 15px;
+							    cursor: pointer;
+						    }
+						}
+					}
+				}
+			}
+
+			
 		}
 	}	
+}
+
+
+@media all and (max-width: 600px){
+	#profile-heading{
+		font-size: 2.2rem !important;
+		margin-top: 1rem !important;
+	}
+	#profile-detail{
+		font-size:1.4rem !important;
+	}
+	.past-book-details{
+		width: 360px !important;
+		margin: auto !important; 
+	}
+	.issue-book-details{
+		width: 360px !important;
+		margin:auto !important;
+	}
 }

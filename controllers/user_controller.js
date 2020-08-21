@@ -67,12 +67,14 @@ module.exports.removeSession = function(req,res){
 module.exports.searchUser = async function(req,res){
 	if(Object.keys(req.query).length>0){
 		let search_user = await User.findOne({email:req.query.email});
+		console.log([search_user])
 		return res.render('searchUser',{
 		title:'KNIT-Library Users',
-		search_user:search_user
+		search_user:[search_user]
 	})
 	}else{
 		let search_user = await User.find({});
+		console.log(search_user)
 		return res.render('searchUser',{
 		title:'KNIT-Library Users',
 		search_user:search_user
@@ -109,23 +111,17 @@ module.exports.profile = async function(req,res){
 }
 
 module.exports.editProfile = function(req,res){
-	if(req.params.id == req.user.id /*|| req.user.email == env.adminEmail */){
 		User.findById(req.params.id,function(err,user){
 			return res.render('editUserProfile',{
 			title:'Edit Profile',
 			editUser:user
 			});
 		});
-	}else{
-		req.flash('error','You are not allowed to do this');
-		return res.redirect('back');
-	}
 }
 
 module.exports.updateProfile = async function(req,res){
 	try{
 		let user = await User.findById(req.params.id);
-		if(req.user.id == user.id /*|| req.user.email == env.adminEmail*/){
 			if(req.body.email){
 				req.body.email = user.email;
 			}
@@ -135,9 +131,6 @@ module.exports.updateProfile = async function(req,res){
 			await User.findByIdAndUpdate(req.params.id,req.body);
 			req.flash('success','Your profile has been updated now !');
 			return res.redirect(`/users/profile/${req.params.id}`);
-		}else{
-			return res.status(401).send('Unauthorised');
-		}
 	}catch(err){
 		req.flash('error','Error while updating profile ..')
 		console.log(err);
