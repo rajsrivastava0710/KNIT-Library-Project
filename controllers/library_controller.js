@@ -52,7 +52,7 @@ module.exports.categoryDetails = async function(req,res){
 module.exports.categoryBooks = async function(req,res){
 	try{
 		let category = req.params.name;
-		let foundBooks = await Book.find({'category':{$regex:new RegExp(category,"i")}});
+		let foundBooks = await Book.find({'category':{$regex:new RegExp(category,"i")},copyAvailable:false});
 		category=category.charAt(0).toUpperCase()+category.substr(1,);
 		return res.render('categoryBooks',{
 			books:foundBooks,
