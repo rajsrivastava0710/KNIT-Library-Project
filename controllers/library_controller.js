@@ -23,6 +23,49 @@ module.exports.library = async function(req,res){
 	});
 }
 
+module.exports.categoryDetails = async function(req,res){
+	try{
+		
+		let categories = ['Literature','Comics','Research','Astrology','Academic'];
+		let url = 
+		['/library/category/literature',
+		'/library/category/comics',
+		'/library/category/research',
+		'/library/category/astrology',
+		'/library/category/academic']
+		
+		// for(let i of categories){
+		// 	let found = await Book.find({'category':{$regex:new RegExp(i,"i")}});
+		// 	console.log(found);
+		// }
+		return res.render('category',{
+			categories:categories,
+			url:url,
+			title:'Category'
+		})
+		}catch(err){
+		console.log(err);
+		return res.redirect('/');
+	}
+}
+
+module.exports.categoryBooks = async function(req,res){
+	try{
+		let category = req.params.name;
+		let foundBooks = await Book.find({'category':{$regex:new RegExp(category,"i")}});
+		category=category.charAt(0).toUpperCase()+category.substr(1,);
+		return res.render('categoryBooks',{
+			books:foundBooks,
+			category:category,
+			title:category
+		})
+
+	}catch(err){
+		console.log(err);
+		return res.redirect('/');
+	}
+}
+
 module.exports.bookDetails = async function(req,res){
 	try{
 	let book = await Book.findById(req.params.id).populate('owner')

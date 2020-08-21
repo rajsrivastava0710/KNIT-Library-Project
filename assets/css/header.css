@@ -48,12 +48,22 @@ header {
             object-fit: cover;
             box-shadow: 0 0 4px 1px #c73821; }
       header .default-flex ._80per #book-text {
-        background-color: #d1e1a4;
+        background-color: #dfaaa7;
         transition: all .5s ease-in-out;
         font-weight: 600;
         font-family: sans-serif; }
         header .default-flex ._80per #book-text:hover {
-          background: #b9db58; }
+          background: #ec847f; }
+      header .default-flex ._80per #cat-text {
+        background: inherit;
+        transition: all .2s ease-in-out;
+        font-weight: 600;
+        font-family: sans-serif; }
+        header .default-flex ._80per #cat-text a {
+          color: #544e99 !important; }
+        header .default-flex ._80per #cat-text:hover {
+          /*background:blue;*/
+          background: linear-gradient(#e39797, #d2bd6b); }
       header .default-flex ._80per .small-margin {
         padding: 1rem 1rem 1rem 1rem; }
         header .default-flex ._80per .small-margin .black-font {
@@ -121,7 +131,7 @@ div.show {
   /*display: flex;*/
   width: 290px; }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
   header .default-flex ._80per {
     /*div{*/
     display: none;

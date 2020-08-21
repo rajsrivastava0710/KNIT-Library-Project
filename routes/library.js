@@ -12,6 +12,10 @@ console.log('Books router loaded');
 
 router.get('/',libraryController.library);
 
+router.get('/category',passport.checkAuthentication,libraryController.categoryDetails);
+
+router.get('/category/:name',passport.checkAuthentication,libraryController.categoryBooks);
+
 router.get('/book/:id',passport.checkAuthentication,libraryController.bookDetails);
 
 router.get('/book/:id/edit',passport.checkAuthentication,allowAdminAccessOnly,libraryController.editBook);

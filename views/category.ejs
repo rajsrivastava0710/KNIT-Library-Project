@@ -1,0 +1,9 @@
+<link rel="stylesheet" type="text/css" href="/css/category.css">
+<div>
+	<div class='heading_'>Books Category</div>
+	<div class='category-collection'>
+	<% for(let i=0;i<categories.length;i++){ %>
+		<div class='category'><a href='<%= url[i] %>'><%= categories[i] %></a></div>
+	<% } %>
+</div>
+</div>

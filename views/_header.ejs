@@ -10,6 +10,9 @@
 		<div class='small-margin' id='book-text'>
 			<a style='color: #149f78;' class='black-font' href='/library'>Books</a>
 		</div>
+		<div class='small-margin' id='cat-text'>
+			<a style='color: #149f78;' class='black-font' href='/library/category'>Category</a>
+		</div>
  		<% if(locals.user.email == locals.adminEmail){ %>
  		<div id='nav-user' class='small-margin'>
 			<a style='color: #ad1c1c;' class='black-font' href='/users/profile/<%= user._id %>'>ADMIN</a>
@@ -47,6 +50,10 @@
 			<% }else{ %>
 				<span style='color: #ad1c1c;'><%= locals.user.name.split(' ')[0] %></span>
 			<% } %>
+			</a>
+		</div>
+		<div><a href='/library/category'>
+				<span>Category</span>
 			</a>
 		</div>
 		<div><a href='/library'>

@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="/css/library.css">
+<div id='page-container'>
+<div class='heading_'><%= category %></div>
+
+<% if(books.length==0){ %>
+	<div class= 'empty-message'>
+		We have no such books at the moment
+	</div>
+<% } %>
+<div id='book-collection-container'>
+<% for(book of books){ %>
+	<div class='full-book-container'>
+	<div class='cover-pic-container'>
+	<% if(book.coverPage){ %>
+		<div class='book-container' style='background: url(<%= book.coverPage %>);background-size: cover;background-position: center;'>
+	<% } else { %>
+		<div class='book-container' style='background: url(https://www.thisiscolossal.com/wp-content/uploads/2014/03/120430.gif);background-size: cover;background-position: center;'>
+	<% } %>	
+		<div><button><a href='/library/book/<%= book.id %>'>Open</a></button></div>
+	</div>
+	</div>
+	<div class='book-detail'>
+		<span><%= book.name.length>35?book.name.substr(0,30)+"...":book.name %></span>
+		<Span><%= book.writer %></Span>
+	</div>
+	</div>
+<% } %>
+</div>
+</div>

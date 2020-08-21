@@ -58,12 +58,25 @@ header{
 				}
 			}
 			#book-text{
-				background-color: #d1e1a4;
+				background-color: #dfaaa7;
 				transition: all .5s ease-in-out;
 				font-weight: 600;
 	    		font-family: sans-serif;
 				&:hover{
-				background: #b9db58;
+				background: #ec847f;
+				}
+			}
+			#cat-text{
+				background: inherit;
+				transition: all .2s ease-in-out;
+				font-weight: 600;
+	    		font-family: sans-serif;
+	    		a{
+	    			color:#544e99 !important;
+	    		}
+				&:hover{
+					/*background:blue;*/
+				background: linear-gradient(#e39797,#d2bd6b);
 				}
 			}
 			.small-margin{
@@ -154,7 +167,7 @@ div{
 	width:290px;
 }
 }
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 800px){
 	header{
 		.default-flex{
 			._80per{
