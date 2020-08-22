@@ -1,9 +1,12 @@
 const nodeMailer = require('../config/nodemailer');
+
+const env = require('../config/environment');
+
 //new way to export like module.exports = 
 exports.notifyUser = (user,bookName) => {
 	let htmlString = nodeMailer.renderTemplate({user:user,bookName:bookName},'/users/notify_user.ejs');
 	nodeMailer.transporter.sendMail({
-		from: 'rajsriv.14@gmail.com',
+		from: env.gmail_id,
 		to: user.email,
 		subject:'Notification from KNIT-Library !',
 		html: htmlString

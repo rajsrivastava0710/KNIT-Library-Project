@@ -36,6 +36,5 @@ router.post('/add-book/create',passport.checkAuthentication, allowAdminAccessOnl
 
 router.get('/userlist',passport.checkAuthentication, allowAdminAccessOnly, libraryController.occupyList);
 
-router.use('/book',require('./comment'));
 
 module.exports = router;

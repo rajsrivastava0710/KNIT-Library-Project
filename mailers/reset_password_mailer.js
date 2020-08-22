@@ -1,9 +1,12 @@
 const nodeMailer = require('../config/nodemailer');
+
+const env = require('../config/environment');
+
 //new way to export like module.exports = 
 exports.resetLink = (reset) => {
 	let htmlString = nodeMailer.renderTemplate({reset:reset},'/users/reset_password.ejs');
 	nodeMailer.transporter.sendMail({
-		from: 'rajsriv.14@gmail.com',
+		from: env.gmail_id,
 		to: reset.user.email,
 		subject:'KNIT-Library Password Reset !',
 		html: htmlString

@@ -8,6 +8,10 @@ const development = {
 	google_client_id:process.env.LIBRARY_GOOGLE_CLIENT_ID,
 	google_client_secret:process.env.LIBRARY_GOOGLE_CLIENT_SECRET,
 	google_callback_url:process.env.LIBRARY_GOOGLE_CALLBACK_URL,
+	github_callback_url:process.env.LIBRARY_GITHUB_CALLBACK_URL,
+	github_client_id:process.env.LIBRARY_GITHUB_CLIENT_ID,
+	github_client_secret:process.env.LIBRARY_GITHUB_CLIENT_SECRET,
+	
 	ADMIN_EMAIL:process.env.ADMIN_EMAIL
 }
 
